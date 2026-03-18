@@ -13,7 +13,8 @@ var rest_panels: Array[RoadmapPanel] = [
 	RoadmapPanelDieSell.new(),
 	RoadmapPanelDieUpgrade.new(),
 	RoadmapPanelModifier.new(),
-	RoadmapPanelTypeChanger.new()
+	RoadmapPanelTypeChanger.new(),
+	RoadmapPanelModifierManager.new()
 ]
 
 func generate_as_rest_layer(panel_amt: int) -> RoadmapLayer:

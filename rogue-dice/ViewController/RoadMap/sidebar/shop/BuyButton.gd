@@ -2,7 +2,7 @@ class_name BuyButton extends Button
 
 signal bought(buy_button: BuyButton)
 
-@export var button_text: String = "Buy"
+@export_multiline() var button_text: String = "Buy"
 @export var price: int = 5
 @export var dont_remove_price_from_money: bool = false
 @export var sayer_end_pos: Vector2 = Vector2(0, 100)

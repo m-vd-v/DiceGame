@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://devyxhcgc8p6s"]
+
+[ext_resource type="Script" uid="uid://cx7pt7ptse7le" path="res://ViewController/RoadMap/sidebar/side_bar_modifier_manager.gd" id="1_xnoca"]
+[ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="2_lm5gw"]
+[ext_resource type="Script" uid="uid://bw2buous6e43u" path="res://ViewController/RoadMap/sidebar/shop/BuyButton.gd" id="3_ndnah"]
+[ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="4_plbav"]
+
+[node name="SideBarModifier" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("dice_holder", "remove_left_mod", "remove_right_mod", "swap_mods", "sidebar_bg")]
+script = ExtResource("1_xnoca")
+dice_holder = NodePath("SideBar/DiceHolder")
+remove_left_mod = NodePath("SideBar/RemoveLeftModifier")
+remove_right_mod = NodePath("SideBar/RemoveRightModifier")
+swap_mods = NodePath("SideBar/SwapModifiers")
+sidebar_bg = NodePath("SideBar")
+
+[node name="SideBar" parent="." unique_id=600030345 instance=ExtResource("2_lm5gw")]
+metadata/_edit_lock_ = true
+
+[node name="DiceHolder" parent="SideBar" unique_id=1138977444 instance=ExtResource("4_plbav")]
+position = Vector2(1504, 416)
+do_dice_lock = false
+
+[node name="RemoveLeftModifier" type="Button" parent="SideBar" unique_id=1303737168]
+offset_left = 1344.0
+offset_top = 504.0
+offset_right = 1496.0
+offset_bottom = 560.0
+text = "Remove Left
+Modifier"
+script = ExtResource("3_ndnah")
+button_text = "Remove Left
+Modifier"
+dont_remove_price_from_money = true
+queue_free_on_bought = false
+metadata/_custom_type_script = "uid://bw2buous6e43u"
+
+[node name="RemoveRightModifier" type="Button" parent="SideBar" unique_id=800385087]
+offset_left = 1512.0
+offset_top = 504.0
+offset_right = 1664.0
+offset_bottom = 560.0
+text = "Remove Right
+Modifier"
+script = ExtResource("3_ndnah")
+button_text = "Remove Right
+Modifier"
+dont_remove_price_from_money = true
+queue_free_on_bought = false
+metadata/_custom_type_script = "uid://bw2buous6e43u"
+
+[node name="SwapModifiers" type="Button" parent="SideBar" unique_id=2066451531]
+offset_left = 1424.0
+offset_top = 264.0
+offset_right = 1584.0
+offset_bottom = 320.0
+text = "Swap Modifiers"
+script = ExtResource("3_ndnah")
+button_text = "Swap Modifiers"
+dont_remove_price_from_money = true
+queue_free_on_bought = false
+metadata/_custom_type_script = "uid://bw2buous6e43u"
+
+[connection signal="bought" from="SideBar/RemoveLeftModifier" to="." method="_on_remove_left_modifier_bought"]
+[connection signal="bought" from="SideBar/RemoveLeftModifier" to="." method="_on_buy_button_bought"]
+[connection signal="bought" from="SideBar/RemoveRightModifier" to="." method="_on_remove_right_modifier_bought"]
+[connection signal="bought" from="SideBar/RemoveRightModifier" to="." method="_on_buy_button_bought"]
+[connection signal="bought" from="SideBar/SwapModifiers" to="." method="_on_swap_modifiers_bought"]
+[connection signal="bought" from="SideBar/SwapModifiers" to="." method="_on_buy_button_bought"]

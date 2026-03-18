@@ -9,6 +9,9 @@ func _ready() -> void:
 	update_sidebar()
 	GameManager.reroll_amt = GameManager.max_rerolls
 	update_score(0)
+	for die_node: DieNode in GameManager.dice_manager_node.get_children():
+		await die_node.die.modifier1._on_start_battle(die_node)
+		await die_node.die.modifier2._on_start_battle(die_node)
 
 func update_score(score: int) -> void:
 	score_label.text = (
