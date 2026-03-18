@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dx3qpekbk44m8"]
+
+[ext_resource type="Script" uid="uid://n17n5fickvqu" path="res://ViewController/RoadMap/sidebar/shop/die_upgrader.gd" id="1_8j1us"]
+[ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="1_f4nwl"]
+[ext_resource type="Script" uid="uid://bw2buous6e43u" path="res://ViewController/RoadMap/sidebar/shop/BuyButton.gd" id="2_8j1us"]
+
+[node name="DieUpgrader" type="Node2D" unique_id=2013316711 node_paths=PackedStringArray("upgrade_die_holder", "buy_button")]
+script = ExtResource("1_8j1us")
+upgrade_die_holder = NodePath("UpgradeDiceHolder")
+buy_button = NodePath("UpgradeDiceHolder/UpgradeBuyButton")
+
+[node name="UpgradeDiceHolder" parent="." unique_id=1138977444 instance=ExtResource("1_f4nwl")]
+do_dice_lock = false
+
+[node name="UpgradeBuyButton" type="Button" parent="UpgradeDiceHolder" unique_id=214299319]
+offset_left = -80.0
+offset_top = 88.0
+offset_right = 80.0
+offset_bottom = 144.0
+script = ExtResource("2_8j1us")
+button_text = "+1 To Die"
+dont_remove_price_from_money = true
+queue_free_on_bought = false
+metadata/_custom_type_script = "uid://bw2buous6e43u"
+
+[connection signal="bought" from="UpgradeDiceHolder/UpgradeBuyButton" to="." method="_on_upgrade_buy_button_bought"]

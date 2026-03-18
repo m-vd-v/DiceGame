@@ -1,0 +1,217 @@
+[gd_scene load_steps=32 format=3 uid="uid://pc5y2ucwrl11"]
+
+[ext_resource type="Script" uid="uid://bwam0u74fy553" path="res://ViewController/test_main.gd" id="1_6yiq4"]
+[ext_resource type="PackedScene" uid="uid://bwnsf1jywb5bt" path="res://ViewController/Dice/dice_tray.tscn" id="1_l1pay"]
+[ext_resource type="Script" uid="uid://4tf7a4twpm1u" path="res://Model/Game/Battle/Battle.gd" id="2_ee87x"]
+[ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="2_jyqdq"]
+[ext_resource type="PackedScene" uid="uid://bgjluquchj6qg" path="res://ViewController/Dice/die_node.tscn" id="2_x2bfe"]
+[ext_resource type="Script" uid="uid://v61xcfi62sw" path="res://Model/Game/Dice/Die.gd" id="3_x2bfe"]
+[ext_resource type="PackedScene" uid="uid://dxii43uujyyoy" path="res://ViewController/Dice/dice_manager.tscn" id="4_141qg"]
+[ext_resource type="PackedScene" uid="uid://dexyc4k7sp4t1" path="res://ViewController/Utilities/dice_holder_holder.tscn" id="4_mnshl"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="8_stpfq"]
+[ext_resource type="Resource" uid="uid://d1ijuum83uruw" path="res://Model/Game/Dice/DieTypes/Resources/DieTypeMulitplier.tres" id="9_k7q1m"]
+[ext_resource type="Script" uid="uid://bl288rbgx4tbv" path="res://Model/Game/Dice/DieTypes/DiceTypeBonus.gd" id="10_6vk31"]
+[ext_resource type="Script" uid="uid://bwyntilqehncr" path="res://Model/Game/Dice/DieTypes/DieTypeMultiplier.gd" id="10_ej0se"]
+[ext_resource type="Script" uid="uid://edo4fqvmscpf" path="res://Model/Game/Dice/DieTypes/DieTypeMoney.gd" id="11_cf5uq"]
+[ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/sidebar/side_bar.tscn" id="14_2w6y8"]
+
+[sub_resource type="Resource" id="Resource_k7q1m"]
+script = ExtResource("2_ee87x")
+score = 50
+metadata/_custom_type_script = "uid://4tf7a4twpm1u"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnshl"]
+size = Vector2(2176, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_141qg"]
+size = Vector2(128, 1080)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ee87x"]
+font = ExtResource("8_stpfq")
+font_size = 48
+
+[sub_resource type="Resource" id="Resource_jyqdq"]
+script = ExtResource("3_x2bfe")
+type = ExtResource("9_k7q1m")
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_gws1p"]
+script = ExtResource("11_cf5uq")
+metadata/_custom_type_script = "uid://edo4fqvmscpf"
+
+[sub_resource type="Resource" id="Resource_fmg6a"]
+script = ExtResource("3_x2bfe")
+type = SubResource("Resource_gws1p")
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_cf5uq"]
+script = ExtResource("10_ej0se")
+metadata/_custom_type_script = "uid://bwyntilqehncr"
+
+[sub_resource type="Resource" id="Resource_2w6y8"]
+script = ExtResource("3_x2bfe")
+size = 6
+type = SubResource("Resource_cf5uq")
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_q5eh4"]
+script = ExtResource("11_cf5uq")
+metadata/_custom_type_script = "uid://edo4fqvmscpf"
+
+[sub_resource type="Resource" id="Resource_m7aty"]
+script = ExtResource("3_x2bfe")
+size = 6
+type = SubResource("Resource_q5eh4")
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_ej0se"]
+script = ExtResource("10_6vk31")
+metadata/_custom_type_script = "uid://bl288rbgx4tbv"
+
+[sub_resource type="Resource" id="Resource_stpfq"]
+script = ExtResource("3_x2bfe")
+size = 8
+type = SubResource("Resource_ej0se")
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_6vk31"]
+script = ExtResource("10_6vk31")
+metadata/_custom_type_script = "uid://bl288rbgx4tbv"
+
+[sub_resource type="Resource" id="Resource_x2bfe"]
+script = ExtResource("3_x2bfe")
+size = 10
+type = SubResource("Resource_6vk31")
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_141qg"]
+script = ExtResource("3_x2bfe")
+size = 12
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_6yiq4"]
+script = ExtResource("3_x2bfe")
+size = 20
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[node name="TestMain" type="Node2D" node_paths=PackedStringArray("dice_mngr", "dice_holder_holder", "roll_button", "score_label")]
+script = ExtResource("1_6yiq4")
+battle = SubResource("Resource_k7q1m")
+dice_mngr = NodePath("DiceManager")
+dice_holder_holder = NodePath("DiceHolderHolder")
+roll_button = NodePath("RollButton")
+score_label = NodePath("ScoreLabel")
+
+[node name="SideBar" parent="." instance=ExtResource("14_2w6y8")]
+
+[node name="DiceTray" parent="." instance=ExtResource("1_l1pay")]
+position = Vector2(544, 480)
+metadata/_edit_lock_ = true
+
+[node name="DiceHolderHolder" parent="." instance=ExtResource("4_mnshl")]
+
+[node name="DiceHolder" parent="DiceHolderHolder" instance=ExtResource("2_jyqdq")]
+position = Vector2(1168, 80)
+
+[node name="DiceHolder2" parent="DiceHolderHolder" instance=ExtResource("2_jyqdq")]
+position = Vector2(1168, 240)
+
+[node name="DiceHolder3" parent="DiceHolderHolder" instance=ExtResource("2_jyqdq")]
+position = Vector2(1168, 400)
+
+[node name="DiceHolder4" parent="DiceHolderHolder" instance=ExtResource("2_jyqdq")]
+position = Vector2(1168, 560)
+
+[node name="DiceHolder5" parent="DiceHolderHolder" instance=ExtResource("2_jyqdq")]
+position = Vector2(1168, 720)
+
+[node name="DiceHolder6" parent="DiceHolderHolder" instance=ExtResource("2_jyqdq")]
+position = Vector2(1168, 880)
+
+[node name="BigOlWall" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigOlWall"]
+position = Vector2(960, -64)
+shape = SubResource("RectangleShape2D_mnshl")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BigOlWall"]
+position = Vector2(960, 1144)
+shape = SubResource("RectangleShape2D_mnshl")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BigOlWall"]
+position = Vector2(1984, 540)
+shape = SubResource("RectangleShape2D_141qg")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BigOlWall"]
+position = Vector2(-64, 540)
+shape = SubResource("RectangleShape2D_141qg")
+metadata/_edit_lock_ = true
+
+[node name="RollButton" type="Button" parent="."]
+offset_top = 960.0
+offset_right = 320.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("8_stpfq")
+theme_override_font_sizes/font_size = 48
+text = "Roll Dice"
+
+[node name="ScoreButton" type="Button" parent="."]
+offset_left = 760.0
+offset_top = 960.0
+offset_right = 1088.0
+offset_bottom = 1080.0
+theme_override_fonts/font = ExtResource("8_stpfq")
+theme_override_font_sizes/font_size = 48
+text = "Score"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 1344.0
+offset_top = 32.0
+offset_right = 1728.0
+offset_bottom = 104.0
+text = "Score: "
+label_settings = SubResource("LabelSettings_ee87x")
+
+[node name="DiceManager" parent="." instance=ExtResource("4_141qg")]
+
+[node name="DieNodeD4" parent="DiceManager" instance=ExtResource("2_x2bfe")]
+position = Vector2(560, 320)
+die = SubResource("Resource_jyqdq")
+
+[node name="DieNodeD4b" parent="DiceManager" instance=ExtResource("2_x2bfe")]
+position = Vector2(560, 680)
+die = SubResource("Resource_fmg6a")
+
+[node name="DieNodeD6" parent="DiceManager" instance=ExtResource("2_x2bfe")]
+position = Vector2(448, 512)
+die = SubResource("Resource_2w6y8")
+
+[node name="DieNodeD6b" parent="DiceManager" instance=ExtResource("2_x2bfe")]
+position = Vector2(448, 680)
+die = SubResource("Resource_m7aty")
+
+[node name="DieNodeD8" parent="DiceManager" instance=ExtResource("2_x2bfe")]
+position = Vector2(616, 416)
+die = SubResource("Resource_stpfq")
+
+[node name="DieNodeD10" parent="DiceManager" instance=ExtResource("2_x2bfe")]
+position = Vector2(448, 320)
+die = SubResource("Resource_x2bfe")
+
+[node name="DieNodeD12" parent="DiceManager" instance=ExtResource("2_x2bfe")]
+position = Vector2(560, 512)
+die = SubResource("Resource_141qg")
+
+[node name="DieNodeD20" parent="DiceManager" instance=ExtResource("2_x2bfe")]
+position = Vector2(392, 416)
+die = SubResource("Resource_6yiq4")
+
+[connection signal="updated_score" from="DiceHolderHolder" to="." method="_on_dice_holder_holder_updated_score"]
+[connection signal="pressed" from="RollButton" to="." method="_on_roll_button_pressed"]
+[connection signal="pressed" from="ScoreButton" to="." method="_on_score_button_pressed"]

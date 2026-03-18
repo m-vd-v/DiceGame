@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cpknycme6gr7y"]
+
+[ext_resource type="Script" uid="uid://d1lbf8w1emc6v" path="res://Scripts/side_bar_battle.gd" id="1_653sg"]
+[ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="1_pdo2v"]
+[ext_resource type="PackedScene" uid="uid://dexyc4k7sp4t1" path="res://ViewController/Utilities/dice_holder_holder.tscn" id="5_522tv"]
+[ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="6_o0cst"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="7_o0cst"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0cst"]
+font = ExtResource("7_o0cst")
+font_size = 48
+
+[node name="SideBarBattle" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("dice_holder_holder", "score_label", "sidebar_bg")]
+position = Vector2(0, 2)
+script = ExtResource("1_653sg")
+dice_holder_holder = NodePath("SideBar/DiceHolderHolder")
+score_label = NodePath("SideBar/ScoreLabel")
+sidebar_bg = NodePath("SideBar")
+
+[node name="SideBar" parent="." unique_id=600030345 instance=ExtResource("1_pdo2v")]
+show_next_buttons_on_ready = false
+
+[node name="DiceHolderHolder" parent="SideBar" unique_id=1597603686 instance=ExtResource("5_522tv")]
+
+[node name="DiceHolder" parent="SideBar/DiceHolderHolder" unique_id=676761267 instance=ExtResource("6_o0cst")]
+position = Vector2(1168, 78)
+
+[node name="DiceHolder2" parent="SideBar/DiceHolderHolder" unique_id=426564952 instance=ExtResource("6_o0cst")]
+position = Vector2(1168, 238)
+
+[node name="DiceHolder3" parent="SideBar/DiceHolderHolder" unique_id=1807134843 instance=ExtResource("6_o0cst")]
+position = Vector2(1168, 398)
+
+[node name="DiceHolder4" parent="SideBar/DiceHolderHolder" unique_id=1101456916 instance=ExtResource("6_o0cst")]
+position = Vector2(1168, 558)
+
+[node name="DiceHolder5" parent="SideBar/DiceHolderHolder" unique_id=123953327 instance=ExtResource("6_o0cst")]
+position = Vector2(1168, 718)
+
+[node name="ScoreButton" type="Button" parent="SideBar" unique_id=1227727949]
+offset_left = 1280.0
+offset_top = 190.0
+offset_right = 1513.0
+offset_bottom = 265.0
+theme_override_fonts/font = ExtResource("7_o0cst")
+theme_override_font_sizes/font_size = 48
+text = "Score"
+
+[node name="ScoreLabel" type="Label" parent="SideBar" unique_id=775790994]
+offset_left = 1296.0
+offset_top = 112.0
+offset_right = 1680.0
+offset_bottom = 184.0
+text = "Score: "
+label_settings = SubResource("LabelSettings_o0cst")
+
+[connection signal="updated_score" from="SideBar/DiceHolderHolder" to="." method="_on_dice_holder_holder_updated_score"]
+[connection signal="pressed" from="SideBar/ScoreButton" to="." method="_on_score_button_pressed"]

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dbfj3b4s0055x"]
+
+[ext_resource type="Script" uid="uid://bn222h4fe6ces" path="res://ViewController/Dice/die_info/die_values_shower.gd" id="1_pr18x"]
+
+[node name="DieValuesShower" type="VBoxContainer" unique_id=1357897714 node_paths=PackedStringArray("rows")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1612.0
+offset_bottom = -824.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_pr18x")
+rows = [NodePath("Row1"), NodePath("Row2"), NodePath("Row3")]
+
+[node name="Row1" type="HBoxContainer" parent="." unique_id=316753282]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Row2" type="HBoxContainer" parent="." unique_id=220461592]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Row3" type="HBoxContainer" parent="." unique_id=63330361]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1

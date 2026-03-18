@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dej06to8477pd"]
+
+[ext_resource type="Script" uid="uid://cdchv6rld6np8" path="res://ViewController/sidebar/side_bar.gd" id="1_f8cnq"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="2_q1r6f"]
+
+[sub_resource type="Gradient" id="Gradient_4qpgl"]
+colors = PackedColorArray(0, 0, 0, 0.39215687, 0.12, 0.12, 0.12, 0.39215687)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f8cnq"]
+frequency = 0.0055
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q1r6f"]
+width = 640
+height = 1080
+noise = SubResource("FastNoiseLite_f8cnq")
+color_ramp = SubResource("Gradient_4qpgl")
+seamless = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_irojp"]
+font = ExtResource("2_q1r6f")
+font_size = 64
+
+[node name="SideBar" type="Node2D"]
+script = ExtResource("1_f8cnq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1088.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("NoiseTexture2D_q1r6f")
+
+[node name="Title" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_right = 832.0
+offset_bottom = 128.0
+text = "Side Bar Title"
+label_settings = SubResource("LabelSettings_irojp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1664.0
+offset_top = 1000.0
+offset_right = 1912.0
+offset_bottom = 1072.0
+text = "Up Next: Battle"

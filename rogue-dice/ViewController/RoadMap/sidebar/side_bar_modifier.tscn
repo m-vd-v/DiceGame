@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dvt5mm465jyr"]
+
+[ext_resource type="Script" uid="uid://d2bp08656u4bk" path="res://Scripts/side_bar_modifier.gd" id="1_pr3go"]
+[ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="2_a0gl5"]
+[ext_resource type="Script" uid="uid://bw2buous6e43u" path="res://ViewController/RoadMap/sidebar/shop/BuyButton.gd" id="3_a0gl5"]
+[ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="4_xiaed"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="5_xiaed"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iyy04"]
+font = ExtResource("5_xiaed")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_tjv8l"]
+font = ExtResource("5_xiaed")
+font_size = 24
+
+[node name="SideBarModifier" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("dice_holder", "buy_button", "icon", "title_label", "descr_label", "sidebar_bg")]
+script = ExtResource("1_pr3go")
+dice_holder = NodePath("SideBar/DiceHolder")
+buy_button = NodePath("SideBar/BuyButton")
+icon = NodePath("SideBar/DiceHolder/IconTexture")
+title_label = NodePath("SideBar/DiceHolder/VBoxContainer/Title")
+descr_label = NodePath("SideBar/DiceHolder/VBoxContainer/Description")
+sidebar_bg = NodePath("SideBar")
+
+[node name="SideBar" parent="." unique_id=600030345 instance=ExtResource("2_a0gl5")]
+metadata/_edit_lock_ = true
+
+[node name="BuyButton" type="Button" parent="SideBar" unique_id=1303737168]
+offset_left = 1424.0
+offset_top = 505.0
+offset_right = 1584.0
+offset_bottom = 553.0
+text = "Add Modifier"
+script = ExtResource("3_a0gl5")
+price = 2
+dont_remove_price_from_money = true
+queue_free_on_bought = false
+metadata/_custom_type_script = "uid://bw2buous6e43u"
+
+[node name="DiceHolder" parent="SideBar" unique_id=1138977444 instance=ExtResource("4_xiaed")]
+position = Vector2(1504, 416)
+do_dice_lock = false
+
+[node name="IconTexture" type="TextureRect" parent="SideBar/DiceHolder" unique_id=1230026239]
+offset_left = 64.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = -64.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SideBar/DiceHolder" unique_id=1875101996]
+offset_left = -224.0
+offset_top = 160.0
+offset_right = 224.0
+offset_bottom = 357.0
+
+[node name="Title" type="Label" parent="SideBar/DiceHolder/VBoxContainer" unique_id=445284078]
+layout_mode = 2
+text = "Modifier Title - If you see this, something is wrong!"
+label_settings = SubResource("LabelSettings_iyy04")
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Description" type="Label" parent="SideBar/DiceHolder/VBoxContainer" unique_id=1624027776]
+layout_mode = 2
+text = "Modifier Description - If you see this, something is wrong!"
+label_settings = SubResource("LabelSettings_tjv8l")
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Explanation" type="Label" parent="SideBar" unique_id=1583964272]
+offset_left = 1280.0
+offset_top = 136.0
+offset_right = 1728.0
+offset_bottom = 280.0
+text = "After you buy a modifier, another modifier will appear at +4 price."
+label_settings = SubResource("LabelSettings_iyy04")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="bought" from="SideBar/BuyButton" to="." method="_on_buy_button_bought"]

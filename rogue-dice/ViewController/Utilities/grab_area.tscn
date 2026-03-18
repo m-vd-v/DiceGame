@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://wvbo5akga7fv"]
+
+[ext_resource type="Script" uid="uid://csjito3h3wfny" path="res://grab_area.gd" id="1_u2ngi"]
+
+[node name="GrabArea" type="Area2D" unique_id=1402994865]
+script = ExtResource("1_u2ngi")
+
+[node name="Timer" type="Timer" parent="." unique_id=548958114]

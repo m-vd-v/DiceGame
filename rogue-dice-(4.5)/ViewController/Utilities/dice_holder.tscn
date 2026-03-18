@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6w7eckfdchg2"]
+
+[ext_resource type="Script" uid="uid://cun7vf208fsre" path="res://ViewController/Utilities/dice_holder.gd" id="1_ussyj"]
+
+[sub_resource type="Gradient" id="Gradient_qtqc7"]
+colors = PackedColorArray(0.2, 0.164, 0.128, 1, 0.3, 0.2473, 0.198, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nq7bb"]
+gradient = SubResource("Gradient_qtqc7")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_ivkow"]
+colors = PackedColorArray(0.58, 0.2668, 0.2668, 1, 0.67, 0.3082, 0.3082, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qtqc7"]
+noise_type = 2
+fractal_lacunarity = 3.22
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w1fds"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_qtqc7")
+color_ramp = SubResource("Gradient_ivkow")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ussyj"]
+size = Vector2(128, 20)
+
+[node name="DiceHolder" type="Node2D" node_paths=PackedStringArray("swap_button", "dice_detector")]
+script = ExtResource("1_ussyj")
+swap_button = NodePath("SwapButton")
+dice_detector = NodePath("DiceDetector")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+mouse_filter = 2
+use_top_left = true
+
+[node name="Border" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_nq7bb")
+
+[node name="BG" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("NoiseTexture2D_w1fds")
+expand_mode = 1
+
+[node name="DiceDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DiceDetector"]
+shape = SubResource("RectangleShape2D_ussyj")
+
+[node name="SwapButton" type="Button" parent="."]
+z_index = 1
+offset_left = -40.0
+offset_top = 64.0
+offset_right = 40.0
+offset_bottom = 96.0
+text = "Swap"
+
+[connection signal="area_entered" from="DiceDetector" to="." method="_on_dice_detector_area_entered"]
+[connection signal="area_exited" from="DiceDetector" to="." method="_on_dice_detector_area_exited"]
+[connection signal="pressed" from="SwapButton" to="." method="_on_swap_button_pressed"]

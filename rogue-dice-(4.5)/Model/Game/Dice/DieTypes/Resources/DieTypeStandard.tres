@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DieTypeStandard" load_steps=2 format=3 uid="uid://3d0oqp6gyob3"]
+
+[ext_resource type="Script" uid="uid://3nucyi6n3h1m" path="res://Model/Game/Dice/DieTypes/DieTypeStandard.gd" id="1_sqfvt"]
+
+[resource]
+script = ExtResource("1_sqfvt")
+metadata/_custom_type_script = "uid://3nucyi6n3h1m"

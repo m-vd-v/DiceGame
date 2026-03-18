@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DieTypeMultiplier" load_steps=2 format=3 uid="uid://d1ijuum83uruw"]
+
+[ext_resource type="Script" uid="uid://bwyntilqehncr" path="res://Model/Game/Dice/DieTypes/DieTypeMultiplier.gd" id="1_la47s"]
+
+[resource]
+script = ExtResource("1_la47s")
+metadata/_custom_type_script = "uid://bwyntilqehncr"

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dqwav7oag4edo"]
+
+[ext_resource type="Script" uid="uid://b1bggxjh653dg" path="res://Scripts/side_bar_die_upgrade.gd" id="1_w8txo"]
+[ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="2_qs6p3"]
+[ext_resource type="PackedScene" uid="uid://dx3qpekbk44m8" path="res://ViewController/RoadMap/sidebar/shop/die_upgrader.tscn" id="3_w8txo"]
+
+[node name="SideBarDieSell" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("sidebar_bg")]
+script = ExtResource("1_w8txo")
+sidebar_bg = NodePath("SideBar")
+
+[node name="SideBar" parent="." unique_id=600030345 instance=ExtResource("2_qs6p3")]
+metadata/_edit_lock_ = true
+
+[node name="DieUpgrader" parent="SideBar" unique_id=2013316711 instance=ExtResource("3_w8txo")]
+position = Vector2(1280, 384)
+price = 0
+
+[node name="DieUpgrader2" parent="SideBar" unique_id=601563453 instance=ExtResource("3_w8txo")]
+position = Vector2(1504, 384)
+level = 2
+
+[node name="DieUpgrader3" parent="SideBar" unique_id=817730719 instance=ExtResource("3_w8txo")]
+position = Vector2(1728, 384)
+price = 10
+level = 2

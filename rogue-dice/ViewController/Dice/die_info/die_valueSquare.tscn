@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://wp2qgq5s3aqg"]
+
+[ext_resource type="Script" uid="uid://cjrujdt7u3i64" path="res://ViewController/Dice/die_info/die_value_square.gd" id="1_m2vuj"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="2_ooww3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nsjsr"]
+font = ExtResource("2_ooww3")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="DieValueSquare" type="Control" unique_id=1242425060]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1872.0
+offset_bottom = -1032.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m2vuj")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=980756344]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=2068418325]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/ColorRect" unique_id=580231129]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+text = "69"
+label_settings = SubResource("LabelSettings_nsjsr")
+horizontal_alignment = 1
+vertical_alignment = 1

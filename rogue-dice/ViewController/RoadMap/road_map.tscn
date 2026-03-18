@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ceesg7xgkuwla"]
+
+[ext_resource type="Script" uid="uid://b7gjb3aqwsvyh" path="res://Scripts/road_map.gd" id="1_xcsej"]
+[ext_resource type="Script" uid="uid://dnmymurc5wi0t" path="res://Model/Game/Roadmap/RoadmapLayer.gd" id="2_gy71h"]
+[ext_resource type="Script" uid="uid://ca55o7xbhnyqq" path="res://Model/Game/Roadmap/Roadmap.gd" id="2_ux3y7"]
+
+[sub_resource type="Resource" id="Resource_xav8r"]
+script = ExtResource("2_ux3y7")
+metadata/_custom_type_script = "uid://ca55o7xbhnyqq"
+
+[node name="RoadMapNode" type="Node2D" unique_id=1956576117]
+script = ExtResource("1_xcsej")
+roadmap = SubResource("Resource_xav8r")

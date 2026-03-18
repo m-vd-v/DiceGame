@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://mge8u608pjdo"]
+
+[ext_resource type="Script" uid="uid://73y0cw7cydl6" path="res://Scripts/side_bar_type_changer.gd" id="1_1fyum"]
+[ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="2_qn5j4"]
+[ext_resource type="Script" uid="uid://bw2buous6e43u" path="res://ViewController/RoadMap/sidebar/shop/BuyButton.gd" id="3_4q517"]
+[ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="4_7tib2"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="5_ahgit"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iyy04"]
+font = ExtResource("5_ahgit")
+font_size = 32
+
+[node name="SideBarTypeChanger" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("dice_holder", "buy_button", "sidebar_bg")]
+script = ExtResource("1_1fyum")
+dice_holder = NodePath("SideBar/DiceHolder")
+buy_button = NodePath("SideBar/BuyButton")
+sidebar_bg = NodePath("SideBar")
+
+[node name="SideBar" parent="." unique_id=600030345 instance=ExtResource("2_qn5j4")]
+metadata/_edit_lock_ = true
+
+[node name="BuyButton" type="Button" parent="SideBar" unique_id=1303737168]
+offset_left = 1424.0
+offset_top = 616.0
+offset_right = 1584.0
+offset_bottom = 664.0
+text = "Change Type"
+script = ExtResource("3_4q517")
+price = 0
+dont_remove_price_from_money = true
+queue_free_on_bought = false
+metadata/_custom_type_script = "uid://bw2buous6e43u"
+
+[node name="DiceHolder" parent="SideBar" unique_id=1138977444 instance=ExtResource("4_7tib2")]
+position = Vector2(1504, 520)
+do_dice_lock = false
+
+[node name="IconTexture" type="TextureRect" parent="SideBar/DiceHolder" unique_id=1230026239]
+offset_left = 64.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = -64.0
+
+[node name="Explanation" type="Label" parent="SideBar" unique_id=1583964272]
+offset_left = 1280.0
+offset_top = 240.0
+offset_right = 1728.0
+offset_bottom = 384.0
+text = "After you change the type of a die, the next change costs +3 extra money."
+label_settings = SubResource("LabelSettings_iyy04")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="bought" from="SideBar/BuyButton" to="." method="_on_buy_button_bought"]
+[connection signal="die_added" from="SideBar/DiceHolder" to="." method="_on_dice_holder_die_added"]

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://brywxf5ywhnpd"]
+
+[ext_resource type="Script" uid="uid://cg4p6ixcivhy8" path="res://ViewController/RoadMap/sidebar/shop/die_buy_button.gd" id="1_yjc5c"]
+
+[node name="DieBuyButton" type="Button" unique_id=1281804193]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Buy Die"
+script = ExtResource("1_yjc5c")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

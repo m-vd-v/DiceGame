@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://bgjluquchj6qg"]
+
+[ext_resource type="Script" uid="uid://tlxr42tsud2o" path="res://Scripts/die_node.gd" id="1_qdyun"]
+[ext_resource type="Texture2D" uid="uid://dvtfsfef1pqbr" path="res://Assets/Images/Sprites/Dice/d20.svg" id="2_j3u0e"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="2_kij1j"]
+[ext_resource type="Shape2D" uid="uid://dqby3d1d7b7ut" path="res://ViewController/Globals/Utilities/DiceNodeCollisionShapes/d20.tres" id="4_c0tu2"]
+[ext_resource type="PackedScene" uid="uid://fmx2h7y2g2l0" path="res://ViewController/Utilities/die_grab_area.tscn" id="5_c0tu2"]
+[ext_resource type="PackedScene" uid="uid://72igskch6n0o" path="res://ViewController/Utilities/sayer.tscn" id="6_ii7a2"]
+[ext_resource type="PackedScene" uid="uid://bc48vy8ixcotu" path="res://ViewController/Dice/die_info/die_info.tscn" id="7_qq3l1"]
+[ext_resource type="Texture2D" uid="uid://ctio64vye7uy3" path="res://Assets/Images/Sprites/DieModifiers/Snowball.png" id="8_5hpxr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qdyun"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qdyun"]
+font = ExtResource("2_kij1j")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+outline_size = 20
+outline_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ii7a2"]
+font = ExtResource("2_kij1j")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_size = 20
+outline_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0tu2"]
+font = ExtResource("2_kij1j")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_size = 20
+outline_color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="DieNode" type="RigidBody2D" unique_id=1920822888 node_paths=PackedStringArray("grab_area")]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_qdyun")
+gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp = 2.0
+script = ExtResource("1_qdyun")
+grab_area = NodePath("DieGrabArea")
+
+[node name="DieSprite" type="Sprite2D" parent="." unique_id=444069159]
+texture = ExtResource("2_j3u0e")
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="DieSprite" unique_id=1208961430]
+use_top_left = true
+metadata/_edit_lock_ = true
+
+[node name="NumberLabel" type="Label" parent="DieSprite/CenterContainer" unique_id=1095666308]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_qdyun")
+metadata/_edit_lock_ = true
+
+[node name="PermBonusLabel" type="Label" parent="DieSprite" unique_id=1495609593]
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = -24.0
+text = "+99"
+label_settings = SubResource("LabelSettings_ii7a2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TempBonusLabel" type="Label" parent="DieSprite" unique_id=509463582]
+offset_left = -24.0
+offset_top = 24.0
+offset_right = 24.0
+offset_bottom = 64.0
+text = "+99"
+label_settings = SubResource("LabelSettings_c0tu2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DieInfo" parent="DieSprite" unique_id=2099925150 instance=ExtResource("7_qq3l1")]
+visible = false
+z_index = 2
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=267825416]
+visible = false
+shape = ExtResource("4_c0tu2")
+
+[node name="DieGrabArea" parent="." unique_id=168187961 node_paths=PackedStringArray("die_node", "drag_object") instance=ExtResource("5_c0tu2")]
+die_node = NodePath("..")
+drag_object = NodePath("..")
+do_physics_based_grab = true
+
+[node name="GrabCollision" type="CollisionShape2D" parent="DieGrabArea" unique_id=48177398]
+
+[node name="Sayer" parent="." unique_id=1829892346 instance=ExtResource("6_ii7a2")]
+position = Vector2(96, 0)
+end_pos = Vector2(200, 0)
+
+[node name="ModifierSprite1" type="TextureRect" parent="." unique_id=1488878620]
+offset_left = -72.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = 64.0
+texture = ExtResource("8_5hpxr")
+expand_mode = 1
+
+[node name="ModifierSprite2" type="TextureRect" parent="." unique_id=212529121]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 64.0
+texture = ExtResource("8_5hpxr")
+expand_mode = 1
+
+[connection signal="area_entered" from="DieGrabArea" to="." method="_on_die_grab_area_area_entered"]
+[connection signal="area_exited" from="DieGrabArea" to="." method="_on_die_grab_area_area_exited"]
+[connection signal="end_grab" from="DieGrabArea" to="." method="_on_die_grab_area_end_grab"]
+[connection signal="end_hover" from="DieGrabArea" to="." method="_on_die_grab_area_end_hover"]
+[connection signal="start_grab" from="DieGrabArea" to="." method="_on_die_grab_area_start_grab"]
+[connection signal="start_hover" from="DieGrabArea" to="." method="_on_die_grab_area_start_hover"]

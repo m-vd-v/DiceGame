@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DieTypeBonus" load_steps=2 format=3 uid="uid://3v7nva0l1u53"]
+
+[ext_resource type="Script" uid="uid://bl288rbgx4tbv" path="res://Model/Game/Dice/DieTypes/DiceTypeBonus.gd" id="1_vcj8q"]
+
+[resource]
+script = ExtResource("1_vcj8q")
+metadata/_custom_type_script = "uid://bl288rbgx4tbv"

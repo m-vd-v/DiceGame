@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dej06to8477pd"]
+
+[ext_resource type="Script" uid="uid://cdchv6rld6np8" path="res://Scripts/side_bar.gd" id="1_tccj6"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="2_5tlir"]
+
+[sub_resource type="Gradient" id="Gradient_4qpgl"]
+colors = PackedColorArray(1, 1, 1, 0.39215687, 0.83, 0.83, 0.83, 0.39215687)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f8cnq"]
+frequency = 0.0055
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q1r6f"]
+width = 640
+height = 1080
+noise = SubResource("FastNoiseLite_f8cnq")
+color_ramp = SubResource("Gradient_4qpgl")
+seamless = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_irojp"]
+font = ExtResource("2_5tlir")
+font_size = 64
+
+[node name="SideBarBG" type="Node2D" unique_id=1012158627 node_paths=PackedStringArray("next_buttons")]
+script = ExtResource("1_tccj6")
+next_buttons = NodePath("NextButtons")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1381826688]
+offset_left = 1088.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("NoiseTexture2D_q1r6f")
+
+[node name="Title" type="Label" parent="TextureRect" unique_id=71633039]
+layout_mode = 0
+offset_right = 832.0
+offset_bottom = 128.0
+text = "Side Bar Title"
+label_settings = SubResource("LabelSettings_irojp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButtons" type="HBoxContainer" parent="." unique_id=130620697]
+offset_left = 1096.0
+offset_top = 968.0
+offset_right = 1914.0
+offset_bottom = 1072.0
+alignment = 1
