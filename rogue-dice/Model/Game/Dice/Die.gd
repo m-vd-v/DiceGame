@@ -14,11 +14,15 @@ enum Size {
 @export var type: DieType = DieTypeStandard.new()
 @export var modifier1: DieModifier = DieModifierNone.new()
 @export var modifier2: DieModifier = DieModifierNone.new()
+@export var curse: DieCurse = DieCurseNone.new()
 
 @export var permanent_bonus: int = 0
 @export var temporary_bonus: int = 0
 
 @export var price: int = 5
+
+func get_die_effects() -> Array[DieEffect]:
+	return [modifier1, modifier2, curse]
 
 func get_bonus_in_string(bonus: int, show_zero: bool = false) -> String:
 	var str: String = ""

@@ -11,3 +11,12 @@ metadata/_custom_type_script = "uid://ca55o7xbhnyqq"
 [node name="RoadMapNode" type="Node2D" unique_id=1956576117]
 script = ExtResource("1_xcsej")
 roadmap = SubResource("Resource_xav8r")
+
+[node name="StartButton" type="Button" parent="." unique_id=1587117427]
+offset_left = 1477.0
+offset_top = 424.0
+offset_right = 1802.0
+offset_bottom = 541.0
+text = "Start"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

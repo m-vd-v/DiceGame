@@ -14,7 +14,6 @@ metadata/_edit_lock_ = true
 
 [node name="DiceHolder" parent="SideBar" unique_id=1138977444 instance=ExtResource("3_wgqxr")]
 position = Vector2(1504, 512)
-do_dice_lock = false
 
 [node name="DestroyDieButton" type="Button" parent="SideBar/DiceHolder" unique_id=180823501]
 offset_left = -80.0

@@ -1,6 +1,7 @@
 class_name SideBarBG extends Node2D
 
 signal next_sidebar
+signal after_slide_into_view
 
 const HEIGHT: int = 1080
 
@@ -38,6 +39,7 @@ func slide_into_view() -> void:
 		self, "position", Vector2(0, 0), 0.5
 	).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	await tween.finished
+	after_slide_into_view.emit()
 
 func slide_away() -> void:
 	var tween: Tween = create_tween()

@@ -8,7 +8,8 @@ enum Rarity {
 
 static var modifiers: Dictionary[Rarity, Array] = {
 	Rarity.COMMON: [
-		DieModifierCoin.new(), DieModifierLoaded.new(), DieModifierRecycle.new()
+		DieModifierCoin.new(), DieModifierLoaded.new(), DieModifierRecycle.new(),
+		DieModifierVampire.new(), DieModifierPowerUp.new()
 	],
 	Rarity.UNCOMMON: [
 		DieModifierSnowball.new(), DieModifierPrism.new(),
@@ -23,6 +24,25 @@ static func generate_modifier(rarities: Array[Rarity]) -> DieModifier:
 	for rarity in rarities:
 		gen_modifiers.append_array(modifiers[rarity])
 	return gen_modifiers.pick_random().duplicate()
+
+
+static var curses: Dictionary[Rarity, Array] = {
+	Rarity.COMMON: [
+		DieCurseCasinoDie.new(), DieCurseMoltenSnowball.new()
+	],
+	Rarity.UNCOMMON: [
+		DieCurseGlass.new()
+	],
+	Rarity.RARE: [
+		DieCurseRottenClover.new(), DieCurseUnstable.new()
+	]
+}
+static func generate_curse(rarities: Array[Rarity]) -> DieCurse:
+	var gen_curses: Array[DieCurse] = []
+	for rarity in rarities:
+		gen_curses.append_array(curses[rarity])
+	return gen_curses.pick_random().duplicate()
+
 
 static var die_types: Dictionary[Rarity, Array] = {
 	Rarity.COMMON: [
@@ -76,6 +96,8 @@ static func generate_common_die() -> Die:
 	die.permanent_bonus = randi_range(-1, 1)
 	die.type = generate_die_type([Rarity.COMMON, Rarity.UNCOMMON])
 	die.price = randi_range(3, 5)
+	if randi_range(0, 100) < 25:
+		die.curse = generate_curse([Rarity.COMMON])
 	return die
 
 static func generate_uncommon_die() -> Die:
@@ -87,6 +109,8 @@ static func generate_uncommon_die() -> Die:
 	die.type = generate_die_type([Rarity.COMMON, Rarity.UNCOMMON])
 	die.modifier1 = generate_modifier([Rarity.COMMON])
 	die.price = randi_range(6, 8)
+	if randi_range(0, 100) < 33:
+		die.curse = generate_curse([Rarity.COMMON, Rarity.UNCOMMON])
 	return die
 
 static func generate_rare_die() -> Die:
@@ -99,4 +123,6 @@ static func generate_rare_die() -> Die:
 	die.modifier1 = generate_modifier([Rarity.COMMON, Rarity.UNCOMMON])
 	die.modifier2 = generate_modifier([Rarity.COMMON, Rarity.UNCOMMON, Rarity.RARE])
 	die.price = randi_range(9, 12)
+	if randi_range(0, 100) < 50:
+		die.curse = generate_curse([Rarity.COMMON, Rarity.UNCOMMON, Rarity.RARE])
 	return die

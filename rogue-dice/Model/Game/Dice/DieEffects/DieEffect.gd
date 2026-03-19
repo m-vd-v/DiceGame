@@ -1,18 +1,17 @@
-class_name DieModifierGrow extends DieModifier
+@abstract class_name DieEffect extends Resource
 
-func get_title() -> String:
-	return "Growing"
-func get_description() -> String:
-	return "After rolling, increases the face it lands on by 1."
-func get_icon() -> Texture:
-	return load("res://Assets/Images/Sprites/DieModifiers/Grow.png")
+@abstract func get_title() -> String
+@abstract func get_description() -> String
+@abstract func get_icon() -> Texture
 
-func _on_start_battle(_die_node: DieNode) -> void: pass
+func _on_start_battle(die_node: DieNode) -> void:
+	pass
+
+func _replace_roll(die_node: DieNode) -> void:
+	pass
 
 func _after_reroll(die_node: DieNode) -> void:
-	var die: Die = die_node.die
-	die.faces[die.current_face] += 1
-	die_node.update_die_nr()
+	pass
 
 func _after_score(die_node: DieNode,
 			dice_scored_before: Array[DieNode], dice_scored_after: Array[DieNode]
@@ -29,3 +28,5 @@ func _after_scoring_done(die_node: DieNode,
 			all_die_nodes_scored: Array[DieNode]
 		) -> void:
 	pass
+
+func _after_battle(_die_node: DieNode) -> void: pass

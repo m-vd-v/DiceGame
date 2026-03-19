@@ -3,19 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dbfj3b4s0055x" path="res://ViewController/Dice/die_info/die_values_shower.tscn" id="1_b1grx"]
 [ext_resource type="Script" uid="uid://dajln6fsoyurv" path="res://ViewController/Dice/die_info/die_info.gd" id="1_ho7if"]
 [ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="1_jet18"]
-[ext_resource type="Script" uid="uid://v61xcfi62sw" path="res://Model/Game/Dice/Die.gd" id="2_fvi7s"]
-[ext_resource type="Script" uid="uid://edo4fqvmscpf" path="res://Model/Game/Dice/DieTypes/DieTypeMoney.gd" id="3_pqnyh"]
-
-[sub_resource type="Resource" id="Resource_00fbl"]
-script = ExtResource("3_pqnyh")
-metadata/_custom_type_script = "uid://edo4fqvmscpf"
-
-[sub_resource type="Resource" id="Resource_6rtic"]
-script = ExtResource("2_fvi7s")
-size = 12
-type = SubResource("Resource_00fbl")
-permanent_bonus = 1
-metadata/_custom_type_script = "uid://v61xcfi62sw"
 
 [sub_resource type="LabelSettings" id="LabelSettings_6rtic"]
 font = ExtResource("1_jet18")
@@ -39,116 +26,155 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_pqnyh"]
 font = ExtResource("1_jet18")
 
+[sub_resource type="LabelSettings" id="LabelSettings_emm3h"]
+font = ExtResource("1_jet18")
+font_size = 24
+
 [sub_resource type="LabelSettings" id="LabelSettings_00fbl"]
 font = ExtResource("1_jet18")
 
-[node name="DieInfo" type="Control" unique_id=2099925150 node_paths=PackedStringArray("size_label", "bonus_label", "type_label", "type_descr", "mod_1_title_label", "mod_1_descr_label", "mod_2_title_label", "mod_2_descr_label", "die_value_shower")]
+[node name="DieInfo" type="Control" unique_id=2099925150 node_paths=PackedStringArray("margin_container", "bg", "text_container", "size_label", "bonus_label", "type_label", "type_descr", "mod_1_title_label", "mod_1_descr_label", "mod_2_title_label", "mod_2_descr_label", "die_value_shower", "curse_title_label", "curse_descr_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1536.0
-offset_bottom = -632.0
+offset_right = -1472.0
+offset_bottom = -504.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ho7if")
-size_label = NodePath("ColorRect/VBoxContainer/Head/DieSizeLabel")
-bonus_label = NodePath("ColorRect/VBoxContainer/BonusLabel")
-type_label = NodePath("ColorRect/VBoxContainer/Head/DieTypeLabel")
-type_descr = NodePath("ColorRect/VBoxContainer/TypeDescr")
-mod_1_title_label = NodePath("ColorRect/VBoxContainer/Modifiers/Modifier1/Mod1Name")
-mod_1_descr_label = NodePath("ColorRect/VBoxContainer/Modifiers/Modifier1/ModDescr1")
-mod_2_title_label = NodePath("ColorRect/VBoxContainer/Modifiers/Modifier2/Mod2Name")
-mod_2_descr_label = NodePath("ColorRect/VBoxContainer/Modifiers/Modifier2/ModDescr2")
-die_value_shower = NodePath("ColorRect/VBoxContainer/DieValuesShower")
-test_die = SubResource("Resource_6rtic")
+margin_container = NodePath("Control/MarginContainer")
+bg = NodePath("Control/MarginContainer/ColorRect")
+text_container = NodePath("Control/MarginContainer/TextContainer")
+size_label = NodePath("Control/MarginContainer/TextContainer/Head/DieSizeLabel")
+bonus_label = NodePath("Control/MarginContainer/TextContainer/BonusLabel")
+type_label = NodePath("Control/MarginContainer/TextContainer/Head/DieTypeLabel")
+type_descr = NodePath("Control/MarginContainer/TextContainer/TypeDescr")
+mod_1_title_label = NodePath("Control/MarginContainer/TextContainer/Modifiers/Modifier1/Mod1Name")
+mod_1_descr_label = NodePath("Control/MarginContainer/TextContainer/Modifiers/Modifier1/ModDescr1")
+mod_2_title_label = NodePath("Control/MarginContainer/TextContainer/Modifiers/Modifier2/Mod2Name")
+mod_2_descr_label = NodePath("Control/MarginContainer/TextContainer/Modifiers/Modifier2/ModDescr2")
+die_value_shower = NodePath("Control/MarginContainer/TextContainer/DieValuesShower")
+curse_title_label = NodePath("Control/MarginContainer/TextContainer/CurseTitle")
+curse_descr_label = NodePath("Control/MarginContainer/TextContainer/CurseDescription")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=668159368]
+[node name="Control" type="Control" parent="." unique_id=2032911987]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1532683390]
 layout_mode = 0
-offset_right = 384.0
-offset_bottom = 448.0
+offset_right = 424.0
+offset_bottom = 266.0
 mouse_filter = 2
-color = Color(0, 0, 0, 0.5882353)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1633433485]
-layout_mode = 0
-offset_right = 384.0
-offset_bottom = 448.0
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer" unique_id=668159368]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.64705884)
+
+[node name="TextContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=1633433485]
+custom_minimum_size = Vector2(448, 0)
+layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Head" type="HBoxContainer" parent="ColorRect/VBoxContainer" unique_id=694637862]
+[node name="Head" type="HBoxContainer" parent="Control/MarginContainer/TextContainer" unique_id=694637862]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="DieTypeLabel" type="Label" parent="ColorRect/VBoxContainer/Head" unique_id=769504285]
+[node name="DieTypeLabel" type="Label" parent="Control/MarginContainer/TextContainer/Head" unique_id=769504285]
 layout_mode = 2
 text = "Die Type"
 label_settings = SubResource("LabelSettings_6rtic")
 horizontal_alignment = 1
 
-[node name="DieSizeLabel" type="Label" parent="ColorRect/VBoxContainer/Head" unique_id=1775144723]
+[node name="DieSizeLabel" type="Label" parent="Control/MarginContainer/TextContainer/Head" unique_id=1775144723]
 layout_mode = 2
 text = "d20"
 label_settings = SubResource("LabelSettings_aah86")
 horizontal_alignment = 1
 
-[node name="TypeDescr" type="Label" parent="ColorRect/VBoxContainer" unique_id=986881309]
+[node name="TypeDescr" type="Label" parent="Control/MarginContainer/TextContainer" unique_id=986881309]
 layout_mode = 2
 text = "Type Description"
 label_settings = SubResource("LabelSettings_jet18")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Modifiers" type="HBoxContainer" parent="ColorRect/VBoxContainer" unique_id=379353835]
+[node name="Modifiers" type="HBoxContainer" parent="Control/MarginContainer/TextContainer" unique_id=379353835]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Modifier1" type="VBoxContainer" parent="ColorRect/VBoxContainer/Modifiers" unique_id=1534457079]
+[node name="Modifier1" type="VBoxContainer" parent="Control/MarginContainer/TextContainer/Modifiers" unique_id=1534457079]
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Mod1Name" type="Label" parent="ColorRect/VBoxContainer/Modifiers/Modifier1" unique_id=1024456343]
+[node name="Mod1Name" type="Label" parent="Control/MarginContainer/TextContainer/Modifiers/Modifier1" unique_id=1024456343]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "Die Modifiers"
 label_settings = SubResource("LabelSettings_i11v1")
 horizontal_alignment = 1
 
-[node name="ModDescr1" type="Label" parent="ColorRect/VBoxContainer/Modifiers/Modifier1" unique_id=178371203]
+[node name="ModDescr1" type="Label" parent="Control/MarginContainer/TextContainer/Modifiers/Modifier1" unique_id=178371203]
 layout_mode = 2
 text = "Modifier Description"
 label_settings = SubResource("LabelSettings_jet18")
-horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Modifier2" type="VBoxContainer" parent="ColorRect/VBoxContainer/Modifiers" unique_id=234637920]
+[node name="Spacer" type="ColorRect" parent="Control/MarginContainer/TextContainer/Modifiers" unique_id=1428313554]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Modifier2" type="VBoxContainer" parent="Control/MarginContainer/TextContainer/Modifiers" unique_id=234637920]
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Mod2Name" type="Label" parent="ColorRect/VBoxContainer/Modifiers/Modifier2" unique_id=995811893]
+[node name="Mod2Name" type="Label" parent="Control/MarginContainer/TextContainer/Modifiers/Modifier2" unique_id=995811893]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "Die Modifiers"
 label_settings = SubResource("LabelSettings_fvi7s")
 horizontal_alignment = 1
 
-[node name="ModDescr2" type="Label" parent="ColorRect/VBoxContainer/Modifiers/Modifier2" unique_id=535774110]
+[node name="ModDescr2" type="Label" parent="Control/MarginContainer/TextContainer/Modifiers/Modifier2" unique_id=535774110]
 layout_mode = 2
 text = "Modifier Description"
 label_settings = SubResource("LabelSettings_pqnyh")
-horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="DieValuesShower" parent="ColorRect/VBoxContainer" unique_id=1791907552 instance=ExtResource("1_b1grx")]
+[node name="CurseTitle" type="Label" parent="Control/MarginContainer/TextContainer" unique_id=2034500389]
+layout_mode = 2
+text = "Curse Title"
+label_settings = SubResource("LabelSettings_emm3h")
+horizontal_alignment = 1
+
+[node name="CurseDescription" type="Label" parent="Control/MarginContainer/TextContainer" unique_id=300603392]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Curse Description"
+label_settings = SubResource("LabelSettings_00fbl")
+autowrap_mode = 3
+
+[node name="DieValuesShower" parent="Control/MarginContainer/TextContainer" unique_id=1791907552 instance=ExtResource("1_b1grx")]
 layout_mode = 2
 
-[node name="BonusLabel" type="Label" parent="ColorRect/VBoxContainer" unique_id=38813363]
+[node name="BonusLabel" type="Label" parent="Control/MarginContainer/TextContainer" unique_id=38813363]
 layout_mode = 2
 text = "+2 (permanent) / +3 (temporary)"
 label_settings = SubResource("LabelSettings_00fbl")
 horizontal_alignment = 1
+
+[node name="Spacer" type="ColorRect" parent="Control/MarginContainer/TextContainer" unique_id=537104125]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0, 0, 0, 1)

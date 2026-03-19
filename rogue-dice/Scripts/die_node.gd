@@ -16,6 +16,9 @@ const ROLL_TIME: float = 0.1
 
 @onready var mod_sprite1: TextureRect = $ModifierSprite1
 @onready var mod_sprite2: TextureRect = $ModifierSprite2
+@onready var curse_sprite: TextureRect = $CurseSprite
+
+@onready var lock_icon: TextureRect = $LockIcon
 
 @export var die: Die
 
@@ -42,10 +45,12 @@ func push(dir: Vector2 = Vector2(randf(), randf()),
 
 func lock() -> void:
 	grab_area.active = false
+	lock_icon.visible = true
 	locked = true
 
 func unlock() -> void:
 	grab_area.active = true
+	lock_icon.visible = false
 	locked = false
 
 func roll(
@@ -64,8 +69,10 @@ func roll(
 		roll_time *= 1.5
 	angular_velocity = 0
 	update_die_nr( die.next_face_value() )
-	die.modifier1._after_reroll(self)
-	die.modifier2._after_reroll(self)
+	for effect: DieEffect in die.get_die_effects():
+		effect._replace_roll(self)
+	for effect: DieEffect in die.get_die_effects():
+		effect._after_reroll(self)
 	do_highlight_animation()
 
 func do_highlight_animation(speed: float = 0.1) -> void:
@@ -84,14 +91,24 @@ func do_highlight_animation(speed: float = 0.1) -> void:
 	)
 	await shrink_tween.finished
 
+func destroy() -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(
+		self, "scale", Vector2.ZERO, 0.5
+	).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	await tween.finished
+	get_parent().remove_child(self)
+	GameManager.recalculate_dice_amt()
+	queue_free()
+
 func set_die_temp_bonus(value: int) -> void:
 	die.temporary_bonus = value
 	update_die_nr()
 func add_temp_bonus(value: int, update_modifiers: bool = true) -> void:
 	set_die_temp_bonus( die.temporary_bonus + value )
 	if not update_modifiers: return
-	die.modifier1._on_gain_temp_bonus(self, value)
-	die.modifier2._on_gain_temp_bonus(self, value)
+	for effect in die.get_die_effects():
+		effect._on_gain_temp_bonus(self, value)
 
 func set_die_perm_bonus(value: int) -> void:
 	die.permanent_bonus = value
@@ -99,8 +116,8 @@ func set_die_perm_bonus(value: int) -> void:
 func add_perm_bonus(value: int, update_modifiers: bool = true) -> void:
 	set_die_perm_bonus( die.permanent_bonus + value )
 	if not update_modifiers: return
-	die.modifier1._on_gain_perm_bonus(self, value)
-	die.modifier2._on_gain_perm_bonus(self, value)
+	for effect in die.get_die_effects():
+		effect._on_gain_perm_bonus(self, value)
 
 func update_die_size() -> void:
 	sprite.texture = Dice2Texture.d2t(die.size)
@@ -130,6 +147,7 @@ func update_die_type() -> void:
 func update_modifier_sprites() -> void:
 	mod_sprite1.texture = die.modifier1.get_icon()
 	mod_sprite2.texture = die.modifier2.get_icon()
+	curse_sprite.texture = die.curse.get_icon()
 
 func set_dice_tray_collision(value: bool) -> void:
 	if value:
@@ -165,8 +183,7 @@ func _on_die_grab_area_area_exited(area: Area2D) -> void:
 
 
 func _on_die_grab_area_start_hover() -> void:
-	die_info.update(die)
-	die_info.visible = true
+	die_info.show_info(die)
 
 func _on_die_grab_area_end_hover() -> void:
-	die_info.visible = false
+	die_info.hide_info()

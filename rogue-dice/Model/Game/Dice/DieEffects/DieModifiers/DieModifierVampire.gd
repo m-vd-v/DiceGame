@@ -3,8 +3,8 @@ class_name DieModifierVampire extends DieModifier
 func get_title() -> String:
 	return "Vampire"
 func get_description() -> String:
-	return "At the start of a battle, reduce a random side by 1,
-		increase a side by 1, and increase a side by 2."
+	return ("At the start of a battle, reduce a random side by 1, " +
+		"increase a side by 1, and increase a side by 2.")
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/Vampire.png")
 
@@ -22,22 +22,3 @@ func _on_start_battle(die_node: DieNode) -> void:
 	die.faces[increase2_idx] += 2
 	die_node.update_die_nr()
 	die_node.say("Vampire!")
-
-func _after_reroll(die_node: DieNode) -> void:
-	pass
-
-func _after_score(die_node: DieNode,
-			dice_scored_before: Array[DieNode], dice_scored_after: Array[DieNode]
-		) -> void:
-	pass
-
-func _on_gain_temp_bonus(die_node: DieNode, gain_amt: int) -> void:
-	pass
-
-func _on_gain_perm_bonus(die_node: DieNode, gain_amt: int) -> void:
-	pass
-
-func _after_scoring_done(die_node: DieNode, 
-			all_die_nodes_scored: Array[DieNode]
-		) -> void:
-	pass

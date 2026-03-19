@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://devyxhcgc8p6s"]
 
-[ext_resource type="Script" uid="uid://cx7pt7ptse7le" path="res://ViewController/RoadMap/sidebar/side_bar_modifier_manager.gd" id="1_xnoca"]
+[ext_resource type="Script" uid="uid://cx7pt7ptse7le" path="res://Scripts/side_bar_modifier_manager.gd" id="1_xnoca"]
 [ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="2_lm5gw"]
 [ext_resource type="Script" uid="uid://bw2buous6e43u" path="res://ViewController/RoadMap/sidebar/shop/BuyButton.gd" id="3_ndnah"]
 [ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="4_plbav"]
@@ -60,9 +60,9 @@ dont_remove_price_from_money = true
 queue_free_on_bought = false
 metadata/_custom_type_script = "uid://bw2buous6e43u"
 
-[connection signal="bought" from="SideBar/RemoveLeftModifier" to="." method="_on_remove_left_modifier_bought"]
 [connection signal="bought" from="SideBar/RemoveLeftModifier" to="." method="_on_buy_button_bought"]
-[connection signal="bought" from="SideBar/RemoveRightModifier" to="." method="_on_remove_right_modifier_bought"]
+[connection signal="bought" from="SideBar/RemoveLeftModifier" to="." method="_on_remove_left_modifier_bought"]
 [connection signal="bought" from="SideBar/RemoveRightModifier" to="." method="_on_buy_button_bought"]
-[connection signal="bought" from="SideBar/SwapModifiers" to="." method="_on_swap_modifiers_bought"]
+[connection signal="bought" from="SideBar/RemoveRightModifier" to="." method="_on_remove_right_modifier_bought"]
 [connection signal="bought" from="SideBar/SwapModifiers" to="." method="_on_buy_button_bought"]
+[connection signal="bought" from="SideBar/SwapModifiers" to="." method="_on_swap_modifiers_bought"]

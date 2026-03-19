@@ -6,5 +6,5 @@ func _on_destroy_die_button_pressed() -> void:
 	if die_holder.current_die == null:
 		return
 	GameManager.money += 5
-	die_holder.current_die.queue_free()
+	await die_holder.current_die.destroy()
 	die_holder.queue_free()

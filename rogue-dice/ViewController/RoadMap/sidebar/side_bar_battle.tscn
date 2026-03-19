@@ -54,5 +54,6 @@ offset_bottom = 184.0
 text = "Score: "
 label_settings = SubResource("LabelSettings_o0cst")
 
+[connection signal="after_slide_into_view" from="SideBar" to="." method="_on_side_bar_after_slide_into_view"]
 [connection signal="updated_score" from="SideBar/DiceHolderHolder" to="." method="_on_dice_holder_holder_updated_score"]
 [connection signal="pressed" from="SideBar/ScoreButton" to="." method="_on_score_button_pressed"]

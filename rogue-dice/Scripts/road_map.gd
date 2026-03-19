@@ -3,16 +3,10 @@ class_name RoadmapNode extends Node2D
 @export var roadmap: Roadmap = Roadmap.new()
 
 var current_side_bar: SideBar
-var current_panel_idx: int = -1
 
 func _ready() -> void:
 	roadmap.fill_roadmap()
 	GameManager.road_map_node = self
-	await get_tree().create_timer(0.1).timeout
-	next_sidebar(roadmap.layers.pop_front().panels[0])
-
-func get_current_panel() -> RoadmapPanel:
-	return roadmap.panels[current_panel_idx]
 
 func next_sidebar(panel: RoadmapPanel) -> void:
 	var side_bar_pck: PackedScene = panel.get_side_bar_pck()
@@ -31,3 +25,7 @@ func next_sidebar(panel: RoadmapPanel) -> void:
 	await old_side_bar.sidebar_bg.slide_away()
 	old_side_bar.queue_free()
 	
+
+func _on_start_button_pressed() -> void:
+	$StartButton.queue_free()
+	next_sidebar(roadmap.layers.pop_front().panels[0])

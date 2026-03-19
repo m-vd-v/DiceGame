@@ -16,8 +16,8 @@ static func score_dice(
 			prev_dice,
 			next_dice
 		)
-		die.modifier1._after_score(die_node, prev_dice, next_dice)
-		die.modifier2._after_score(die_node, prev_dice, next_dice)
+		for effect: DieEffect in die.get_die_effects():
+			effect._after_score(die_node, prev_dice, next_dice)
 		die_node.set_die_temp_bonus(0)
 		score_update_signal.emit(current_score)
 		await die_node.get_tree().create_timer(0.25).timeout

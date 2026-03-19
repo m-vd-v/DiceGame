@@ -1,15 +1,22 @@
-class_name DieModifierCoin extends DieModifier
+class_name DieCurseUnstable extends DieCurse
 
 func get_title() -> String:
-	return "Coin"
+	return "Unstable"
 func get_description() -> String:
-	return "After scoring, you gain money equal to the dice's face value (no bonus)."
+	return "Randomizes the die's Type on reroll."
 func get_icon() -> Texture:
-	return load("res://Assets/Images/Sprites/DieModifiers/Coin.png")
+	return load("res://Assets/Images/Sprites/DieModifiers/DieCurses/Unstable.png")
 
 func _on_start_battle(_die_node: DieNode) -> void: pass
 
-func _after_reroll(_die_node: DieNode) -> void: pass
+func _replace_roll(die_node: DieNode) -> void: pass
+
+func _after_reroll(die_node: DieNode) -> void:
+	die_node.die.type = DieGenerator.generate_die_type(
+		[DieGenerator.Rarity.COMMON, DieGenerator.Rarity.UNCOMMON,
+		DieGenerator.Rarity.RARE]
+	)
+	die_node.update_die_type()
 
 func _after_score(die_node: DieNode,
 			dice_scored_before: Array[DieNode], dice_scored_after: Array[DieNode]
@@ -25,5 +32,4 @@ func _on_gain_perm_bonus(die_node: DieNode, gain_amt: int) -> void:
 func _after_scoring_done(die_node: DieNode, 
 			all_die_nodes_scored: Array[DieNode]
 		) -> void:
-	GameManager.money += die_node.die.get_current_face_value()
-	await die_node.do_highlight_animation()
+	pass

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://72igskch6n0o" path="res://ViewController/Utilities/sayer.tscn" id="6_ii7a2"]
 [ext_resource type="PackedScene" uid="uid://bc48vy8ixcotu" path="res://ViewController/Dice/die_info/die_info.tscn" id="7_qq3l1"]
 [ext_resource type="Texture2D" uid="uid://ctio64vye7uy3" path="res://Assets/Images/Sprites/DieModifiers/Snowball.png" id="8_5hpxr"]
+[ext_resource type="Texture2D" uid="uid://c75uh1dkvcicc" path="res://Assets/Images/Sprites/General/LockIcon.png" id="9_yqkgh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qdyun"]
 friction = 0.0
@@ -100,6 +101,7 @@ position = Vector2(96, 0)
 end_pos = Vector2(200, 0)
 
 [node name="ModifierSprite1" type="TextureRect" parent="." unique_id=1488878620]
+z_index = 1
 offset_left = -72.0
 offset_top = 8.0
 offset_right = -16.0
@@ -108,11 +110,31 @@ texture = ExtResource("8_5hpxr")
 expand_mode = 1
 
 [node name="ModifierSprite2" type="TextureRect" parent="." unique_id=212529121]
+z_index = 1
 offset_left = 16.0
 offset_top = 8.0
 offset_right = 72.0
 offset_bottom = 64.0
 texture = ExtResource("8_5hpxr")
+expand_mode = 1
+
+[node name="CurseSprite" type="TextureRect" parent="." unique_id=1955866716]
+z_index = 1
+offset_left = -72.0
+offset_top = -64.0
+offset_right = -16.0
+offset_bottom = -8.0
+texture = ExtResource("8_5hpxr")
+expand_mode = 1
+
+[node name="LockIcon" type="TextureRect" parent="." unique_id=182906981]
+visible = false
+z_index = 1
+offset_left = 16.0
+offset_top = -64.0
+offset_right = 72.0
+offset_bottom = -8.0
+texture = ExtResource("9_yqkgh")
 expand_mode = 1
 
 [connection signal="area_entered" from="DieGrabArea" to="." method="_on_die_grab_area_area_entered"]

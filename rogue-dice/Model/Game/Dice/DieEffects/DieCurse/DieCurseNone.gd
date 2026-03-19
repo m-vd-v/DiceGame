@@ -1,19 +1,18 @@
-class_name DieModifierHeal extends DieModifier
-
-var delete_on_next_roll: bool = false
+class_name DieCurseNone extends DieCurse
 
 func get_title() -> String:
-	return "Heal"
+	return "No Curse"
 func get_description() -> String:
-	return "After scoring, gives +1 Live and destroys die after next roll."
+	return "-"
 func get_icon() -> Texture:
-	return load("res://Assets/Images/Sprites/DieModifiers/Heal.png")
+	return load("res://Assets/Images/Sprites/DieModifiers/None.png")
 
 func _on_start_battle(_die_node: DieNode) -> void: pass
 
+func _replace_roll(die_node: DieNode) -> void: pass
+
 func _after_reroll(die_node: DieNode) -> void:
-	if delete_on_next_roll:
-		die_node.queue_free()
+	pass
 
 func _after_score(die_node: DieNode,
 			dice_scored_before: Array[DieNode], dice_scored_after: Array[DieNode]
@@ -29,5 +28,4 @@ func _on_gain_perm_bonus(die_node: DieNode, gain_amt: int) -> void:
 func _after_scoring_done(die_node: DieNode, 
 			all_die_nodes_scored: Array[DieNode]
 		) -> void:
-	GameManager.lives += 1
-	delete_on_next_roll = true
+	pass

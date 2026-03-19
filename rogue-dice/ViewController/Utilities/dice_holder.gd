@@ -4,12 +4,16 @@ signal swap_button_pressed(dice_holder: DiceHolder)
 
 signal die_added(dice_holder: DiceHolder)
 
-@export var do_dice_lock: bool = true
+@export var do_dice_lock: bool = false
+@export var lock_dice_on_reroll: bool = true
 
 @export var swap_button: Button
 @export var dice_detector: Area2D
 
 var current_die: DieNode = null
+
+func _ready() -> void:
+	GameManager.on_reroll.connect(_on_reroll)
 
 func move_die_here(die: DieNode = current_die) -> void:
 	var rot_tween: Tween = create_tween()
@@ -31,7 +35,7 @@ func add_die(new_die: DieNode) -> void:
 	move_die_here()
 	die_added.emit(self)
 
-func remove_die(die: DieNode = current_die) -> void:
+func remove_die(die: DieNode = current_die, remove_lock: bool = true) -> void:
 	if die == null:
 		return
 	dice_detector.monitoring = true
@@ -39,7 +43,7 @@ func remove_die(die: DieNode = current_die) -> void:
 	if area.start_grab.is_connected(_die_pick_up):
 		area.start_grab.disconnect(_die_pick_up)
 	die.freeze = false
-	if do_dice_lock:
+	if remove_lock:
 		die.unlock()
 	current_die = null
 
@@ -78,3 +82,7 @@ func _on_dice_detector_area_exited(area: Area2D) -> void:
 
 func _on_swap_button_pressed() -> void:
 	swap_button_pressed.emit(self)
+
+func _on_reroll() -> void:
+	if lock_dice_on_reroll and current_die != null:
+		current_die.lock()

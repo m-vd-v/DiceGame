@@ -12,7 +12,14 @@ func _ready() -> void:
 	update()
 	update_buttons()
 
+func lock_holder_dice() -> void:
+	for die_holder in dice_holders:
+		if die_holder.current_die == null:
+			continue
+		die_holder.current_die.lock()
+
 func count_score() -> void:
+	lock_holder_dice()
 	var dice_nodes: Array[DieNode] = []
 	for dh: DiceHolder in dice_holders:
 		if dh.current_die != null:
@@ -20,11 +27,8 @@ func count_score() -> void:
 	await DiceScorer.score_dice(dice_nodes, updated_score)
 	await get_tree().create_timer(1).timeout
 	for die_node in dice_nodes:
-		await die_node.die.modifier1._after_scoring_done(die_node, dice_nodes)
-		await die_node.die.modifier2._after_scoring_done(die_node, dice_nodes)
-	for dh: DiceHolder in dice_holders:
-		dh.kick_die()
-		
+		for effect: DieEffect in die_node.die.get_die_effects():
+			await effect._after_scoring_done(die_node, dice_nodes)
 
 func update() -> void:
 	for dice_holder: DiceHolder in dice_holders:
@@ -41,10 +45,11 @@ func update_buttons() -> void:
 func swap_dice(dh1: DiceHolder, dh2: DiceHolder) -> void:
 	var die1: DieNode = dh1.current_die
 	var die2: DieNode = dh2.current_die
+	var remove_lock: bool = false
 	if die1 != null:
-		dh1.remove_die(die1)
+		dh1.remove_die(die1, remove_lock)
 	if die2 != null:
-		dh2.remove_die(die2)
+		dh2.remove_die(die2, remove_lock)
 		dh1.add_die(die2)
 	if die1 != null:
 		dh2.add_die(die1)

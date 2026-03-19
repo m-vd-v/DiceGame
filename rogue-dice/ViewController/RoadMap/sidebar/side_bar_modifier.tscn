@@ -14,13 +14,16 @@ font_size = 32
 font = ExtResource("5_xiaed")
 font_size = 24
 
-[node name="SideBarModifier" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("dice_holder", "buy_button", "icon", "title_label", "descr_label", "sidebar_bg")]
+[node name="SideBarModifier" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("dice_holder", "buy_button", "mod_icon", "mod_title_label", "mod_descr_label", "curse_icon", "curse_title_label", "curse_descr_label", "sidebar_bg")]
 script = ExtResource("1_pr3go")
 dice_holder = NodePath("SideBar/DiceHolder")
 buy_button = NodePath("SideBar/BuyButton")
-icon = NodePath("SideBar/DiceHolder/IconTexture")
-title_label = NodePath("SideBar/DiceHolder/VBoxContainer/Title")
-descr_label = NodePath("SideBar/DiceHolder/VBoxContainer/Description")
+mod_icon = NodePath("SideBar/DiceHolder/ModifierIcon")
+mod_title_label = NodePath("SideBar/DiceHolder/ModifierText/Title")
+mod_descr_label = NodePath("SideBar/DiceHolder/ModifierText/Description")
+curse_icon = NodePath("SideBar/DiceHolder/CurseIcon")
+curse_title_label = NodePath("SideBar/DiceHolder/CurseText/Title")
+curse_descr_label = NodePath("SideBar/DiceHolder/CurseText/Description")
 sidebar_bg = NodePath("SideBar")
 
 [node name="SideBar" parent="." unique_id=600030345 instance=ExtResource("2_a0gl5")]
@@ -28,9 +31,9 @@ metadata/_edit_lock_ = true
 
 [node name="BuyButton" type="Button" parent="SideBar" unique_id=1303737168]
 offset_left = 1424.0
-offset_top = 505.0
+offset_top = 569.0
 offset_right = 1584.0
-offset_bottom = 553.0
+offset_bottom = 617.0
 text = "Add Modifier"
 script = ExtResource("3_a0gl5")
 price = 2
@@ -39,22 +42,15 @@ queue_free_on_bought = false
 metadata/_custom_type_script = "uid://bw2buous6e43u"
 
 [node name="DiceHolder" parent="SideBar" unique_id=1138977444 instance=ExtResource("4_xiaed")]
-position = Vector2(1504, 416)
-do_dice_lock = false
+position = Vector2(1504, 480)
 
-[node name="IconTexture" type="TextureRect" parent="SideBar/DiceHolder" unique_id=1230026239]
-offset_left = 64.0
-offset_top = -112.0
-offset_right = 112.0
-offset_bottom = -64.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SideBar/DiceHolder" unique_id=1875101996]
-offset_left = -224.0
+[node name="ModifierText" type="VBoxContainer" parent="SideBar/DiceHolder" unique_id=1875101996]
+offset_left = 16.0
 offset_top = 160.0
-offset_right = 224.0
-offset_bottom = 357.0
+offset_right = 368.0
+offset_bottom = 416.0
 
-[node name="Title" type="Label" parent="SideBar/DiceHolder/VBoxContainer" unique_id=445284078]
+[node name="Title" type="Label" parent="SideBar/DiceHolder/ModifierText" unique_id=445284078]
 layout_mode = 2
 text = "Modifier Title - If you see this, something is wrong!"
 label_settings = SubResource("LabelSettings_iyy04")
@@ -62,7 +58,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 metadata/_edit_lock_ = true
 
-[node name="Description" type="Label" parent="SideBar/DiceHolder/VBoxContainer" unique_id=1624027776]
+[node name="Description" type="Label" parent="SideBar/DiceHolder/ModifierText" unique_id=1624027776]
 layout_mode = 2
 text = "Modifier Description - If you see this, something is wrong!"
 label_settings = SubResource("LabelSettings_tjv8l")
@@ -70,12 +66,48 @@ horizontal_alignment = 1
 autowrap_mode = 3
 metadata/_edit_lock_ = true
 
+[node name="CurseText" type="VBoxContainer" parent="SideBar/DiceHolder" unique_id=1059827545]
+offset_left = -368.0
+offset_top = 160.0
+offset_right = -16.0
+offset_bottom = 416.0
+
+[node name="Title" type="Label" parent="SideBar/DiceHolder/CurseText" unique_id=1118460277]
+layout_mode = 2
+text = "Curse Title - If you see this, something is wrong!"
+label_settings = SubResource("LabelSettings_iyy04")
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="Description" type="Label" parent="SideBar/DiceHolder/CurseText" unique_id=1450867582]
+layout_mode = 2
+text = "Curse Description - If you see this, something is wrong!"
+label_settings = SubResource("LabelSettings_tjv8l")
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[node name="ModifierIcon" type="TextureRect" parent="SideBar/DiceHolder" unique_id=1230026239]
+offset_left = 64.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = -64.0
+expand_mode = 1
+
+[node name="CurseIcon" type="TextureRect" parent="SideBar/DiceHolder" unique_id=260405183]
+offset_left = -128.0
+offset_top = -128.0
+offset_right = -64.0
+offset_bottom = -64.0
+expand_mode = 1
+
 [node name="Explanation" type="Label" parent="SideBar" unique_id=1583964272]
 offset_left = 1280.0
 offset_top = 136.0
 offset_right = 1728.0
 offset_bottom = 280.0
-text = "After you buy a modifier, another modifier will appear at +4 price."
+text = "After you buy a modifier, another modifier will appear at +4 price. Modifiers may come with a curse!"
 label_settings = SubResource("LabelSettings_iyy04")
 horizontal_alignment = 1
 autowrap_mode = 3
