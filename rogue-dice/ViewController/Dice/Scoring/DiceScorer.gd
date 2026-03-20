@@ -13,12 +13,16 @@ func _init(_score_update_signal: Signal, score: int = 0) -> void:
 func score_dice(
 			die_nodes: Array[DieNode],
 		) -> void:
-	print(Hands.get_hand_type_from_die_nodes(die_nodes).name)
+	var hand_type: Hands.Type = Hands.get_hand_type_from_die_nodes(
+		die_nodes
+	)
 	for i in die_nodes.size():
 		var die_node: DieNode = die_nodes[i]
 		prev_dice = die_nodes.slice(0, i)
 		next_dice = die_nodes.slice(i+1, 9999)
 		await score_die(die_node)
+	current_score = int(current_score * hand_type.multiplier)
+	score_update_signal.emit(current_score)
 
 func score_die(die_node: DieNode, call_after_score: bool = true) -> void:
 	var die: Die = die_node.die

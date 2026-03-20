@@ -158,14 +158,14 @@ func set_dice_tray_collision(value: bool) -> void:
 		collision_layer = 3
 		collision_mask = 3
 
-func _on_die_grab_area_end_grab(grab_area: GrabArea) -> void:
+func _on_die_grab_area_end_grab(_grab_area: GrabArea) -> void:
 	grabbed = false
 	set_dice_tray_collision(false)
 	physics_material_override.bounce = 1
 	lock_rotation = false
 	mass = 1.0
 
-func _on_die_grab_area_start_grab(grab_area: GrabArea) -> void:
+func _on_die_grab_area_start_grab(_grab_area: GrabArea) -> void:
 	grabbed = true
 	set_dice_tray_collision(true)
 	physics_material_override.bounce = 0

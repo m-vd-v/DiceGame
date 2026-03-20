@@ -7,7 +7,7 @@ func fill_roadmap() -> void:
 	for i in 50:
 		var battle: Battle = Battle.new()
 		battle.score = start_score
-		start_score += 25 * int(start_score/50)
+		start_score += 25 * int(float(start_score)/50)
 		layers.append(
 			RoadmapLayer.new().generate_as_battle_layer(battle)
 		)

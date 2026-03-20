@@ -7,7 +7,8 @@ class Type:
 		name = _name
 		multiplier = _multiplier
 
-static var NONE: Type = Type.new("High Die", 1.0)
+static var NONE: Type = Type.new("None", 0.0)
+static var HIGH_DIE: Type = Type.new("High Die", 1.0)
 static var PAIR: Type = Type.new("Pair", 1.5)
 static var TWO_PAIR: Type = Type.new("Two Pair", 2.0)
 static var THREE_OAK: Type = Type.new("Three of a Kind", 2.0)
@@ -30,6 +31,7 @@ static func get_hand_type_from_die_nodes(die_nodes: Array[DieNode]) -> Type:
 	return get_hand_type(faces)
 
 static func get_hand_type(faces: Array[int]) -> Type:
+	if faces.is_empty(): return NONE
 	var frequencies: Dictionary[int, int] = get_face_frequencies(faces)
 	var freq_arr: Array[int] = frequencies.values()
 	var included_numbers: Array[int] = frequencies.keys()
@@ -46,7 +48,7 @@ static func get_hand_type(faces: Array[int]) -> Type:
 	if is_3OAK(freq_arr): return THREE_OAK
 	if is_two_pair(freq_arr): return TWO_PAIR
 	if is_pair(freq_arr): return PAIR
-	return NONE
+	return HIGH_DIE
 
 static func get_face_frequencies(faces: Array[int]) -> Dictionary[int, int]:
 	var frequencies: Dictionary[int, int] = {}

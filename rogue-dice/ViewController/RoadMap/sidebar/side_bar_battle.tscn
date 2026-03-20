@@ -69,6 +69,6 @@ Multiplier:"
 label_settings = SubResource("LabelSettings_11ye0")
 
 [connection signal="after_slide_into_view" from="SideBar" to="." method="_on_side_bar_after_slide_into_view"]
-[connection signal="die_added" from="SideBar/DiceHolderHolder" to="." method="_on_dice_holder_holder_die_added"]
+[connection signal="dice_updated" from="SideBar/DiceHolderHolder" to="." method="_on_dice_holder_holder_dice_updated"]
 [connection signal="updated_score" from="SideBar/DiceHolderHolder" to="." method="_on_dice_holder_holder_updated_score"]
 [connection signal="pressed" from="SideBar/ScoreButton" to="." method="_on_score_button_pressed"]

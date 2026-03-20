@@ -3,6 +3,7 @@ class_name DiceHolder extends Node2D
 signal swap_button_pressed(dice_holder: DiceHolder)
 
 signal die_added(dice_holder: DiceHolder)
+signal die_removed(dice_holder: DiceHolder, die_node: DieNode)
 
 @export var do_dice_lock: bool = false
 @export var lock_dice_on_reroll: bool = true
@@ -46,6 +47,7 @@ func remove_die(die: DieNode = current_die, remove_lock: bool = true) -> void:
 	if remove_lock:
 		die.unlock()
 	current_die = null
+	die_removed.emit(self, die)
 
 func kick_die(die: DieNode = current_die) -> void:
 	if die == null:

@@ -2,7 +2,7 @@ class_name DiceHolderHolder extends Node2D
 
 signal updated_score(score: int)
 
-signal die_added
+signal dice_updated
 
 @export var dice_holders: Array[DiceHolder] = []
 
@@ -12,7 +12,10 @@ func _ready() -> void:
 			if child is DiceHolder:
 				dice_holders.append(child)
 				child.die_added.connect(
-					func(die_node): die_added.emit()
+					func(_die_node): dice_updated.emit()
+				)
+				child.die_removed.connect(
+					func(_dh, _die_node): dice_updated.emit()
 				)
 	update()
 	update_buttons()

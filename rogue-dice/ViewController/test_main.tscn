@@ -6,14 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bgjluquchj6qg" path="res://ViewController/Dice/die_node.tscn" id="2_x2bfe"]
 [ext_resource type="Script" uid="uid://v61xcfi62sw" path="res://Model/Game/Dice/Die.gd" id="3_x2bfe"]
 [ext_resource type="PackedScene" uid="uid://dxii43uujyyoy" path="res://ViewController/Dice/dice_manager.tscn" id="4_141qg"]
-[ext_resource type="Script" uid="uid://dc255413k6hea" path="res://Model/Game/Dice/DieTypes/DieTypeBronze.gd" id="8_ej0se"]
+[ext_resource type="Script" uid="uid://edo4fqvmscpf" path="res://Model/Game/Dice/DieTypes/DieTypeMoney.gd" id="8_6vk31"]
 [ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="8_stpfq"]
-[ext_resource type="Script" uid="uid://d23xdjp5wryhs" path="res://Model/Game/Dice/DieEffects/DieCurse/DieCurseHeavy.gd" id="9_cf5uq"]
-[ext_resource type="Script" uid="uid://cyx5ov2h6ue0g" path="res://Model/Game/Dice/DieTypes/DieTypeLead.gd" id="9_ej0se"]
 [ext_resource type="Script" uid="uid://bl288rbgx4tbv" path="res://Model/Game/Dice/DieTypes/DieTypeBonus.gd" id="10_6vk31"]
 [ext_resource type="Script" uid="uid://bwyntilqehncr" path="res://Model/Game/Dice/DieTypes/DieTypeMultiplier.gd" id="10_ej0se"]
 [ext_resource type="Script" uid="uid://3nucyi6n3h1m" path="res://Model/Game/Dice/DieTypes/DieTypeStandard.gd" id="11_6vk31"]
-[ext_resource type="Script" uid="uid://c77a1ssejgrh3" path="res://Model/Game/Dice/DieEffects/DieModifiers/DieModifierFeather.gd" id="12_2w6y8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnshl"]
 size = Vector2(2176, 128)
@@ -30,13 +27,13 @@ script = ExtResource("3_x2bfe")
 type = SubResource("Resource_k7q1m")
 metadata/_custom_type_script = "uid://v61xcfi62sw"
 
-[sub_resource type="Resource" id="Resource_gws1p"]
-script = ExtResource("8_ej0se")
-metadata/_custom_type_script = "uid://dc255413k6hea"
+[sub_resource type="Resource" id="Resource_q5eh4"]
+script = ExtResource("8_6vk31")
+metadata/_custom_type_script = "uid://edo4fqvmscpf"
 
 [sub_resource type="Resource" id="Resource_fmg6a"]
 script = ExtResource("3_x2bfe")
-type = SubResource("Resource_gws1p")
+type = SubResource("Resource_q5eh4")
 metadata/_custom_type_script = "uid://v61xcfi62sw"
 
 [sub_resource type="Resource" id="Resource_cf5uq"]
@@ -49,19 +46,14 @@ size = 6
 type = SubResource("Resource_cf5uq")
 metadata/_custom_type_script = "uid://v61xcfi62sw"
 
-[sub_resource type="Resource" id="Resource_hl7ho"]
-script = ExtResource("9_cf5uq")
-metadata/_custom_type_script = "uid://d23xdjp5wryhs"
-
-[sub_resource type="Resource" id="Resource_q5eh4"]
-script = ExtResource("9_ej0se")
-metadata/_custom_type_script = "uid://cyx5ov2h6ue0g"
+[sub_resource type="Resource" id="Resource_gws1p"]
+script = ExtResource("8_6vk31")
+metadata/_custom_type_script = "uid://edo4fqvmscpf"
 
 [sub_resource type="Resource" id="Resource_m7aty"]
 script = ExtResource("3_x2bfe")
 size = 6
-type = SubResource("Resource_q5eh4")
-curse = SubResource("Resource_hl7ho")
+type = SubResource("Resource_gws1p")
 metadata/_custom_type_script = "uid://v61xcfi62sw"
 
 [sub_resource type="Resource" id="Resource_ej0se"]
@@ -84,10 +76,6 @@ size = 10
 type = SubResource("Resource_6vk31")
 metadata/_custom_type_script = "uid://v61xcfi62sw"
 
-[sub_resource type="Resource" id="Resource_pwgbd"]
-script = ExtResource("12_2w6y8")
-metadata/_custom_type_script = "uid://c77a1ssejgrh3"
-
 [sub_resource type="Resource" id="Resource_fpc2t"]
 script = ExtResource("11_6vk31")
 metadata/_custom_type_script = "uid://3nucyi6n3h1m"
@@ -96,7 +84,6 @@ metadata/_custom_type_script = "uid://3nucyi6n3h1m"
 script = ExtResource("3_x2bfe")
 size = 12
 type = SubResource("Resource_fpc2t")
-modifier1 = SubResource("Resource_pwgbd")
 metadata/_custom_type_script = "uid://v61xcfi62sw"
 
 [sub_resource type="Resource" id="Resource_eynjj"]

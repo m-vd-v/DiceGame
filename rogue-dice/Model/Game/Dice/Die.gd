@@ -31,12 +31,12 @@ func get_die_effects() -> Array[DieEffect]:
 	return [modifier1, modifier2, curse]
 
 func get_bonus_in_string(bonus: int, show_zero: bool = false) -> String:
-	var str: String = ""
+	var txt: String = ""
 	if bonus == 0 and not show_zero:
 		return ""
 	if bonus >= 0:
-		str += "+"
-	return str + str(bonus)
+		txt += "+"
+	return txt + str(bonus)
 
 var current_face: int = get_random_face()
 

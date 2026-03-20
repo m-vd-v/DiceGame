@@ -54,5 +54,5 @@ func _on_side_bar_after_slide_into_view() -> void:
 			await effect._on_start_battle(die_node)
 
 
-func _on_dice_holder_holder_die_added() -> void:
+func _on_dice_holder_holder_dice_updated() -> void:
 	update_hand()
