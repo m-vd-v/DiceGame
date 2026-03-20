@@ -3,6 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dbfj3b4s0055x" path="res://ViewController/Dice/die_info/die_values_shower.tscn" id="1_b1grx"]
 [ext_resource type="Script" uid="uid://dajln6fsoyurv" path="res://ViewController/Dice/die_info/die_info.gd" id="1_ho7if"]
 [ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="1_jet18"]
+[ext_resource type="Texture2D" uid="uid://bkpqyrqv4uek3" path="res://Assets/Images/Sprites/DieModifiers/DieCurses/Heavy.png" id="3_i11v1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2d76"]
+font = ExtResource("1_jet18")
+font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_6rtic"]
 font = ExtResource("1_jet18")
@@ -85,6 +90,23 @@ theme_override_constants/separation = 8
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
+
+[node name="Weight" type="CenterContainer" parent="Control/MarginContainer/TextContainer/Head" unique_id=1093813236]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/TextContainer/Head/Weight" unique_id=993606838]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("3_i11v1")
+expand_mode = 1
+
+[node name="WeightLabel" type="Label" parent="Control/MarginContainer/TextContainer/Head/Weight" unique_id=2021116378]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_p2d76")
+vertical_alignment = 2
 
 [node name="DieTypeLabel" type="Label" parent="Control/MarginContainer/TextContainer/Head" unique_id=769504285]
 layout_mode = 2

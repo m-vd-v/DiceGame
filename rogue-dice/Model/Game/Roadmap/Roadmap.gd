@@ -4,7 +4,7 @@ class_name Roadmap extends Resource
 
 func fill_roadmap() -> void:
 	var start_score: int = 50
-	for i in 10:
+	for i in 50:
 		var battle: Battle = Battle.new()
 		battle.score = start_score
 		start_score += 25 * int(start_score/50)

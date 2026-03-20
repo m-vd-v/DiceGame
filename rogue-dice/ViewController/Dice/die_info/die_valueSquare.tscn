@@ -6,9 +6,8 @@
 [sub_resource type="LabelSettings" id="LabelSettings_nsjsr"]
 font = ExtResource("2_ooww3")
 font_size = 24
-font_color = Color(0, 0, 0, 1)
 
-[node name="DieValueSquare" type="Control" unique_id=1242425060]
+[node name="DieValueSquare" type="Control" unique_id=1242425060 node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 3
 anchors_preset = 15
@@ -19,6 +18,7 @@ offset_bottom = -1032.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m2vuj")
+label = NodePath("CenterContainer/ColorRect/Label")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=980756344]
 custom_minimum_size = Vector2(48, 48)
@@ -29,6 +29,12 @@ offset_bottom = 32.0
 [node name="ColorRect" type="ColorRect" parent="CenterContainer" unique_id=2068418325]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
+
+[node name="HighLight" type="ColorRect" parent="CenterContainer/ColorRect" unique_id=2497871]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0.26438904, 0.264389, 0.264389, 1)
 
 [node name="Label" type="Label" parent="CenterContainer/ColorRect" unique_id=580231129]
 layout_mode = 0

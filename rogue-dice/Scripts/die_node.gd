@@ -36,8 +36,9 @@ func _ready() -> void:
 	update_die_type()
 	update_modifier_sprites()
 
-func say(text: String) -> void:
+func say(text: String, time_wait: float = 0.25) -> void:
 	$Sayer.say(text)
+	await get_tree().create_timer(time_wait).timeout
 
 func push(dir: Vector2 = Vector2(randf(), randf()),
 		force: int = ROLL_FORCE) -> void:

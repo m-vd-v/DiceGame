@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cg4p6ixcivhy8" path="res://ViewController/RoadMap/sidebar/shop/die_buy_button.gd" id="1_yjc5c"]
 
 [node name="DieBuyButton" type="Button" unique_id=1281804193]
+z_index = 1
 custom_minimum_size = Vector2(100, 0)
 offset_right = 8.0
 offset_bottom = 8.0

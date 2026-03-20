@@ -9,3 +9,6 @@
 
 @abstract func get_title() -> String
 @abstract func get_description() -> String
+
+func get_base_weight() -> int:
+	return 2

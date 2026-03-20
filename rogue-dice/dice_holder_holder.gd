@@ -2,6 +2,8 @@ class_name DiceHolderHolder extends Node2D
 
 signal updated_score(score: int)
 
+signal die_added
+
 @export var dice_holders: Array[DiceHolder] = []
 
 func _ready() -> void:
@@ -9,8 +11,19 @@ func _ready() -> void:
 		for child in get_children():
 			if child is DiceHolder:
 				dice_holders.append(child)
+				child.die_added.connect(
+					func(die_node): die_added.emit()
+				)
 	update()
 	update_buttons()
+
+func get_dice_nodes() -> Array[DieNode]:
+	var dice_nodes: Array[DieNode] = []
+	for dice_holder in dice_holders:
+		var die_node: DieNode = dice_holder.current_die
+		if die_node != null:
+			dice_nodes.append(die_node)
+	return dice_nodes
 
 func lock_holder_dice() -> void:
 	for die_holder in dice_holders:
@@ -24,7 +37,8 @@ func count_score() -> void:
 	for dh: DiceHolder in dice_holders:
 		if dh.current_die != null:
 			dice_nodes.append(dh.current_die)
-	await DiceScorer.score_dice(dice_nodes, updated_score)
+	var dice_scorer: DiceScorer = DiceScorer.new(updated_score, 0)
+	await dice_scorer.score_dice(dice_nodes)
 	await get_tree().create_timer(1).timeout
 	for die_node in dice_nodes:
 		for effect: DieEffect in die_node.die.get_die_effects():

@@ -6,7 +6,7 @@ func score(
 ) -> int:
 	var value: int = die.get_current_value_with_bonus()
 	var mult_value: float = 1.0 + (float(value) / 10)
-	die_node.say(
+	await die_node.say(
 		"x " + str(mult_value) +
 		" (1.0 + " + str(mult_value-1) + ")"
 	)

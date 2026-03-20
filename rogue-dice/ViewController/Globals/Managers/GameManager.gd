@@ -24,17 +24,17 @@ var max_rerolls: int = 3 :
 		max_rerolls = new
 		reroll_amt_updated.emit()
 
-signal dice_amt_updated
-var dice_amt: int = 8 :
+signal dice_weight_updated
+var dice_weight: int = 8 :
 	set(new):
-		dice_amt = new
-		dice_amt_updated.emit()
-var max_dice_amt: int = 10 :
+		dice_weight = new
+		dice_weight_updated.emit()
+var max_dice_weight: int = 20 :
 	set(new):
-		max_dice_amt = new
-		dice_amt_updated.emit()
-func recalculate_dice_amt() -> void:
-	dice_manager_node.recalculate_die_amt()
+		max_dice_weight = new
+		dice_weight_updated.emit()
+func recalculate_dice_weight() -> void:
+	dice_manager_node.recalculate_die_weight()
 
 var road_map_node: RoadmapNode
 var dice_manager_node: DiceManager

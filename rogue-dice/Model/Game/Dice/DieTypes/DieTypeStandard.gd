@@ -5,7 +5,7 @@ func score(
 	_previous_dice: Array[DieNode], _next_dice: Array[DieNode]
 ) -> int:
 	var value: int = die.get_current_value_with_bonus()
-	die_node.say("+ " + str(value))
+	await die_node.say("+ " + str(value))
 	return old_score + value
 
 func get_color() -> Color:

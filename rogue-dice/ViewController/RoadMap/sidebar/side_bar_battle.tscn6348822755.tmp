@@ -10,10 +10,6 @@
 font = ExtResource("7_o0cst")
 font_size = 48
 
-[sub_resource type="LabelSettings" id="LabelSettings_11ye0"]
-font = ExtResource("7_o0cst")
-font_size = 32
-
 [node name="SideBarBattle" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("dice_holder_holder", "score_label", "sidebar_bg")]
 position = Vector2(0, 2)
 script = ExtResource("1_653sg")
@@ -58,17 +54,6 @@ offset_bottom = 184.0
 text = "Score: "
 label_settings = SubResource("LabelSettings_o0cst")
 
-[node name="HandLabel" type="Label" parent="SideBar" unique_id=610353967]
-unique_name_in_owner = true
-offset_left = 1283.0
-offset_top = 294.0
-offset_right = 1667.0
-offset_bottom = 366.0
-text = "Current Hand:
-Multiplier:"
-label_settings = SubResource("LabelSettings_11ye0")
-
 [connection signal="after_slide_into_view" from="SideBar" to="." method="_on_side_bar_after_slide_into_view"]
-[connection signal="die_added" from="SideBar/DiceHolderHolder" to="." method="_on_dice_holder_holder_die_added"]
 [connection signal="updated_score" from="SideBar/DiceHolderHolder" to="." method="_on_dice_holder_holder_updated_score"]
 [connection signal="pressed" from="SideBar/ScoreButton" to="." method="_on_score_button_pressed"]

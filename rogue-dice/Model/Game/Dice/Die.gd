@@ -21,6 +21,12 @@ enum Size {
 
 @export var price: int = 5
 
+func get_die_weight() -> int:
+	var current_weight: int = type.get_base_weight()
+	for effect: DieEffect in get_die_effects():
+		current_weight = effect.modify_die_weight(current_weight)
+	return max(1, current_weight)
+
 func get_die_effects() -> Array[DieEffect]:
 	return [modifier1, modifier2, curse]
 

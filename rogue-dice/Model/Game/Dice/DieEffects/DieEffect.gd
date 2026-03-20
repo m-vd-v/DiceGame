@@ -13,9 +13,7 @@ func _replace_roll(die_node: DieNode) -> void:
 func _after_reroll(die_node: DieNode) -> void:
 	pass
 
-func _after_score(die_node: DieNode,
-			dice_scored_before: Array[DieNode], dice_scored_after: Array[DieNode]
-		) -> void:
+func _after_score(die_node: DieNode, dice_scorer: DiceScorer) -> void:
 	pass
 
 func _on_gain_temp_bonus(die_node: DieNode, gain_amt: int) -> void:
@@ -30,3 +28,7 @@ func _after_scoring_done(die_node: DieNode,
 	pass
 
 func _after_battle(_die_node: DieNode) -> void: pass
+
+func modify_die_weight(old_weight: int) -> int:
+	return old_weight
+	

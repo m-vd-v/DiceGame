@@ -5,7 +5,7 @@ func score(
 	_previous_dice: Array[DieNode], next_dice: Array[DieNode]
 ) -> int:
 	var value: int = die.get_current_value_with_bonus()
-	die_node.say("Next Die + " + str(value))
+	await die_node.say("Next Die + " + str(value))
 	if next_dice.is_empty():
 		return old_score
 	var next_die_node: DieNode = next_dice[0]

@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://cu3xhu32261up" path="res://Scripts/side_bar_die_sell.gd" id="1_hetmo"]
 [ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="3_q2di2"]
 [ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="3_wgqxr"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="4_wbqmr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gw7a2"]
+font = ExtResource("4_wbqmr")
+font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="SideBarDieSell" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("die_holder", "sidebar_bg")]
 script = ExtResource("1_hetmo")
@@ -21,5 +28,14 @@ offset_top = 96.0
 offset_right = 80.0
 offset_bottom = 152.0
 text = "Destroy Die"
+
+[node name="Label" type="Label" parent="SideBar/DiceHolder" unique_id=1094083809]
+offset_left = -224.0
+offset_top = -192.0
+offset_right = 224.0
+offset_bottom = -128.0
+text = "Sell any Die for 5 Money"
+label_settings = SubResource("LabelSettings_gw7a2")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="SideBar/DiceHolder/DestroyDieButton" to="." method="_on_destroy_die_button_pressed"]

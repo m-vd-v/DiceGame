@@ -13,10 +13,12 @@ static var modifiers: Dictionary[Rarity, Array] = {
 	],
 	Rarity.UNCOMMON: [
 		DieModifierSnowball.new(), DieModifierPrism.new(),
-		DieModifierGrow.new(), DieModifierHeal.new()
+		DieModifierGrow.new(), DieModifierHeal.new(),
+		DieModifierFeather.new()
 	],
 	Rarity.RARE: [
-		DieModifierMirror.new(),
+		DieModifierMirror.new(), DieModifierFireTornado.new(),
+		DieModifierDragonCrash.new()
 	]
 }
 static func generate_modifier(rarities: Array[Rarity]) -> DieModifier:
@@ -31,7 +33,7 @@ static var curses: Dictionary[Rarity, Array] = {
 		DieCurseCasinoDie.new(), DieCurseMoltenSnowball.new()
 	],
 	Rarity.UNCOMMON: [
-		DieCurseGlass.new()
+		DieCurseGlass.new(), DieCurseHeavy.new()
 	],
 	Rarity.RARE: [
 		DieCurseRottenClover.new(), DieCurseUnstable.new()

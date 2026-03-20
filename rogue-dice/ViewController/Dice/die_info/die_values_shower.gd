@@ -11,28 +11,32 @@ var dice_layouts: Dictionary[Die.Size, Array] = {
 	Die.Size.d20: [7, 7, 6]
 }
 
-func update(die_size: Die.Size, values: Array[int]) -> void:
+func update(die: Die) -> void:
 	clear()
-	set_values(die_size, values)
+	set_values(die)
 
-func create_value_square(nr: int) -> DieValueSquare:
+func create_value_square(nr: int, highlight: bool) -> DieValueSquare:
 	var val_sqr_pck: PackedScene = load(
 		"res://ViewController/Dice/die_info/die_valueSquare.tscn"	
 	)
 	var val_sqr: DieValueSquare = val_sqr_pck.instantiate()
-	val_sqr.set_value(nr)
+	val_sqr.set_value(nr, highlight)
 	return val_sqr
 
-func set_values(die_size: Die.Size, values: Array[int]) -> void:
+func set_values(die: Die) -> void:
+	var die_size: Die.Size = die.size
+	var values: Array[int] = die.get_faces()
 	var layout: Array = dice_layouts[die_size]
 	var value_idx: int = 0
 	for y in layout.size():
 		var row: HBoxContainer = rows[y]
 		var die_amt: int = layout[y]
 		for x in die_amt:
-			row.add_child(
-				create_value_square( values[value_idx] )
+			var highlight: bool = (value_idx == die.current_face)
+			var val_sqr: DieValueSquare = create_value_square(
+				values[value_idx], highlight
 			)
+			row.add_child(val_sqr)
 			value_idx += 1
 			
 
