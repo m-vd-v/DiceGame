@@ -20,7 +20,10 @@ const ROLL_TIME: float = 0.1
 
 @onready var lock_icon: TextureRect = $LockIcon
 
-@export var die: Die
+@export var die: Die :
+	set(new_die):
+		die = new_die
+		die.die_effect_added.connect(_on_die_effect_added)
 
 var locked: bool = false
 
@@ -35,6 +38,9 @@ func _ready() -> void:
 	)
 	update_die_type()
 	update_modifier_sprites()
+	for effect in die.get_die_effects():
+		effect._on_added_to_die_node()
+		effect.die_node = self
 
 func say(text: String, time_wait: float = 0.25) -> void:
 	$Sayer.say(text)
@@ -71,9 +77,9 @@ func roll(
 	angular_velocity = 0
 	update_die_nr( die.next_face_value() )
 	for effect: DieEffect in die.get_die_effects():
-		effect._replace_roll(self)
+		effect._replace_roll()
 	for effect: DieEffect in die.get_die_effects():
-		effect._after_reroll(self)
+		effect._after_reroll()
 	do_highlight_animation()
 
 func do_highlight_animation(speed: float = 0.1) -> void:
@@ -109,7 +115,7 @@ func add_temp_bonus(value: int, update_modifiers: bool = true) -> void:
 	set_die_temp_bonus( die.temporary_bonus + value )
 	if not update_modifiers: return
 	for effect in die.get_die_effects():
-		effect._on_gain_temp_bonus(self, value)
+		effect._on_gain_temp_bonus(value)
 
 func set_die_perm_bonus(value: int) -> void:
 	die.permanent_bonus = value
@@ -118,7 +124,7 @@ func add_perm_bonus(value: int, update_modifiers: bool = true) -> void:
 	set_die_perm_bonus( die.permanent_bonus + value )
 	if not update_modifiers: return
 	for effect in die.get_die_effects():
-		effect._on_gain_perm_bonus(self, value)
+		effect._on_gain_perm_bonus(value)
 
 func update_die_size() -> void:
 	sprite.texture = Dice2Texture.d2t(die.size)
@@ -157,6 +163,12 @@ func set_dice_tray_collision(value: bool) -> void:
 	else:
 		collision_layer = 3
 		collision_mask = 3
+
+
+func _on_die_effect_added(die_effect: DieEffect) -> void:
+	die_effect.die_node = self
+	die_effect._on_added_to_die_node()
+
 
 func _on_die_grab_area_end_grab(_grab_area: GrabArea) -> void:
 	grabbed = false

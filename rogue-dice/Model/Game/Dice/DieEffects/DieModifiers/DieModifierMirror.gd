@@ -7,8 +7,8 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/Mirror.png")
 
-func _on_gain_temp_bonus(die_node: DieNode, gain_amt: int) -> void:
+func _on_gain_temp_bonus(gain_amt: int) -> void:
 	die_node.add_temp_bonus(gain_amt, false)
 
-func _on_gain_perm_bonus(die_node: DieNode, gain_amt: int) -> void:
+func _on_gain_perm_bonus(gain_amt: int) -> void:
 	die_node.add_perm_bonus(gain_amt, false)

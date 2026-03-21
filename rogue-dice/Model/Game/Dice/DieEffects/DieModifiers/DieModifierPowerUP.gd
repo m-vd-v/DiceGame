@@ -8,6 +8,6 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/Power-Up.png")
 
-func _on_start_battle(die_node: DieNode) -> void:
+func _on_start_battle() -> void:
 	var die: Die = die_node.die
 	die_node.add_temp_bonus(die.get_current_face_value())

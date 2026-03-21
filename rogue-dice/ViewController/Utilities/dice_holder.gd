@@ -58,6 +58,7 @@ func kick_die(die: DieNode = current_die) -> void:
 		die.position - Vector2(200, 0), 0.5
 	).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	await tween.finished
+	await get_tree().create_timer(1).timeout
 	remove_die(die)
 	die.roll(Vector2(-1, 0))
 

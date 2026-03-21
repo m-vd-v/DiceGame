@@ -7,7 +7,7 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/Prism.png")
 
-func _after_score(die_node: DieNode, dice_scorer: DiceScorer) -> void:
+func _after_score(dice_scorer: DiceScorer) -> void:
 	var dice_scored_after: Array[DieNode] = dice_scorer.next_dice
 	if dice_scored_after.is_empty():
 		return

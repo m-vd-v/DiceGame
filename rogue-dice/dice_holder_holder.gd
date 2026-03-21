@@ -28,6 +28,13 @@ func get_dice_nodes() -> Array[DieNode]:
 			dice_nodes.append(die_node)
 	return dice_nodes
 
+func get_full_dice_holders() -> Array[DiceHolder]:
+	var dhs: Array[DiceHolder] = []
+	for dice_holder in dice_holders:
+		if dice_holder.current_die != null:
+			dhs.append(dice_holder)
+	return dhs
+
 func lock_holder_dice() -> void:
 	for die_holder in dice_holders:
 		if die_holder.current_die == null:
@@ -40,12 +47,12 @@ func count_score() -> void:
 	for dh: DiceHolder in dice_holders:
 		if dh.current_die != null:
 			dice_nodes.append(dh.current_die)
-	var dice_scorer: DiceScorer = DiceScorer.new(updated_score, 0)
+	var dice_scorer: DiceScorer = DiceScorer.new(updated_score, 100)
 	await dice_scorer.score_dice(dice_nodes)
 	await get_tree().create_timer(1).timeout
 	for die_node in dice_nodes:
 		for effect: DieEffect in die_node.die.get_die_effects():
-			await effect._after_scoring_done(die_node, dice_nodes)
+			await effect._after_scoring_done(dice_nodes)
 
 func update() -> void:
 	for dice_holder: DiceHolder in dice_holders:

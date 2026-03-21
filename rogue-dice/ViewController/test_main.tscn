@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dxii43uujyyoy" path="res://ViewController/Dice/dice_manager.tscn" id="4_141qg"]
 [ext_resource type="Script" uid="uid://edo4fqvmscpf" path="res://Model/Game/Dice/DieTypes/DieTypeMoney.gd" id="8_6vk31"]
 [ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="8_stpfq"]
+[ext_resource type="Script" uid="uid://84w3vrm6rkgq" path="res://Model/Game/Dice/DieEffects/DieModifiers/DieModifierShiny.gd" id="9_cf5uq"]
+[ext_resource type="Script" uid="uid://obu6dfihpydb" path="res://Model/Game/Dice/DieTypes/DieTypeBackBonus.gd" id="9_ej0se"]
 [ext_resource type="Script" uid="uid://bl288rbgx4tbv" path="res://Model/Game/Dice/DieTypes/DieTypeBonus.gd" id="10_6vk31"]
 [ext_resource type="Script" uid="uid://bwyntilqehncr" path="res://Model/Game/Dice/DieTypes/DieTypeMultiplier.gd" id="10_ej0se"]
 [ext_resource type="Script" uid="uid://3nucyi6n3h1m" path="res://Model/Game/Dice/DieTypes/DieTypeStandard.gd" id="11_6vk31"]
@@ -46,14 +48,19 @@ size = 6
 type = SubResource("Resource_cf5uq")
 metadata/_custom_type_script = "uid://v61xcfi62sw"
 
+[sub_resource type="Resource" id="Resource_hl7ho"]
+script = ExtResource("9_cf5uq")
+metadata/_custom_type_script = "uid://84w3vrm6rkgq"
+
 [sub_resource type="Resource" id="Resource_gws1p"]
-script = ExtResource("8_6vk31")
-metadata/_custom_type_script = "uid://edo4fqvmscpf"
+script = ExtResource("9_ej0se")
+metadata/_custom_type_script = "uid://obu6dfihpydb"
 
 [sub_resource type="Resource" id="Resource_m7aty"]
 script = ExtResource("3_x2bfe")
 size = 6
 type = SubResource("Resource_gws1p")
+modifier1 = SubResource("Resource_hl7ho")
 metadata/_custom_type_script = "uid://v61xcfi62sw"
 
 [sub_resource type="Resource" id="Resource_ej0se"]

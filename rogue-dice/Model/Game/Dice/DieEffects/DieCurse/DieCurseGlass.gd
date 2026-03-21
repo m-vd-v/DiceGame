@@ -8,7 +8,7 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/DieCurses/Glass.png")
 
-func _on_start_battle(die_node: DieNode) -> void:
+func _on_start_battle() -> void:
 	for i in die_node.die.size:
 		die_node.die.faces[i] += 1
 	die_node.update_die_nr()

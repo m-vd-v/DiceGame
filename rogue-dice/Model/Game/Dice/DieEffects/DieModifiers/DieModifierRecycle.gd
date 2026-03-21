@@ -9,10 +9,10 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/Recycle.png")
 
-func _on_start_battle(_die_node: DieNode) -> void:
+func _on_start_battle() -> void:
 	used = false
 
-func _after_reroll(die_node: DieNode) -> void:
+func _after_reroll() -> void:
 	var die: Die = die_node.die
 	var min_value_idx: int = die.faces.find( die.get_faces().min() )
 	if die.current_face == min_value_idx:

@@ -7,11 +7,7 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/DieCurses/Unstable.png")
 
-func _on_start_battle(_die_node: DieNode) -> void: pass
-
-func _replace_roll(die_node: DieNode) -> void: pass
-
-func _after_reroll(die_node: DieNode) -> void:
+func _after_reroll() -> void:
 	die_node.die.type = DieGenerator.generate_die_type(
 		[DieGenerator.Rarity.COMMON, DieGenerator.Rarity.UNCOMMON,
 		DieGenerator.Rarity.RARE]

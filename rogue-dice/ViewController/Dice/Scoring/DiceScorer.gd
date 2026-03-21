@@ -33,7 +33,7 @@ func score_die(die_node: DieNode, call_after_score: bool = true) -> void:
 	)
 	if call_after_score:
 		for effect: DieEffect in die.get_die_effects():
-			await effect._after_score(die_node, self)
+			await effect._after_score(self)
 	die_node.set_die_temp_bonus(0)
 	score_update_signal.emit(current_score)
 	await die_node.get_tree().create_timer(0.25).timeout

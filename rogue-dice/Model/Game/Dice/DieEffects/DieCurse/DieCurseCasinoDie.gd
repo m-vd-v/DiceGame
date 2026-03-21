@@ -7,9 +7,9 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/DieCurses/CasinoDie.png")
 
-func _on_start_battle(_die_node: DieNode) -> void: pass
+func _on_start_battle() -> void: pass
 
-func _replace_roll(die_node: DieNode) -> void:
+func _replace_roll() -> void:
 	if randi_range(0, 100) < 50:
 		return
 	var die: Die = die_node.die

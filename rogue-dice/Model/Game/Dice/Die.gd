@@ -1,5 +1,7 @@
 class_name Die extends Resource
 
+signal die_effect_added(effect: DieEffect)
+
 enum Size {
 	d4 = 4,
 	d6 = 6,
@@ -12,9 +14,18 @@ enum Size {
 @export var size: Die.Size = Size.d4
 @export var faces: Array[int] = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 @export var type: DieType = DieTypeStandard.new()
-@export var modifier1: DieModifier = DieModifierNone.new()
-@export var modifier2: DieModifier = DieModifierNone.new()
-@export var curse: DieCurse = DieCurseNone.new()
+@export var modifier1: DieModifier = DieModifierNone.new():
+	set(value):
+		modifier1 = value
+		die_effect_added.emit(value)
+@export var modifier2: DieModifier = DieModifierNone.new():
+	set(value):
+		modifier2 = value
+		die_effect_added.emit(value)
+@export var curse: DieCurse = DieCurseNone.new():
+	set(value):
+		curse = value
+		die_effect_added.emit(value)
 
 @export var permanent_bonus: int = 0
 @export var temporary_bonus: int = 0

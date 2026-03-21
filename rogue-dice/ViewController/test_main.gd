@@ -17,7 +17,7 @@ func _ready() -> void:
 	GameManager.dice_weight_updated.connect(update_visuals)
 	dice_mngr.recalculate_die_weight()
 
-func update_visuals() -> void:
+func update_visuals(_add_amt: int = 0) -> void:
 	roll_button.text = (
 		"Roll Dice (" + str(GameManager.reroll_amt) +
 		"/" + str(GameManager.max_rerolls) + ")"

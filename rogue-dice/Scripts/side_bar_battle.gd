@@ -27,8 +27,9 @@ func update_hand() -> void:
 
 func _on_score_button_pressed() -> void:
 	await dice_holder_holder.count_score()
-	for dh: DiceHolder in dice_holder_holder.dice_holders:
-		if dh == dice_holder_holder.dice_holders.back():
+	var dice_holders: Array[DiceHolder] = dice_holder_holder.get_full_dice_holders()
+	for dh: DiceHolder in dice_holders:
+		if dh == dice_holders.back():
 			await dh.kick_die()
 		else:
 			dh.kick_die()
@@ -39,7 +40,7 @@ func _on_score_button_pressed() -> void:
 		$SideBar/ScoreButton.queue_free()
 		for die_node: DieNode in GameManager.dice_manager_node.get_children():
 			for effect: DieEffect in die_node.die.get_die_effects():
-				effect._after_battle(die_node)
+				effect._after_battle()
 	else:
 		GameManager.lives -= 1
 		GameManager.reroll_amt = GameManager.max_rerolls
@@ -51,7 +52,7 @@ func _on_dice_holder_holder_updated_score(score: int) -> void:
 func _on_side_bar_after_slide_into_view() -> void:
 	for die_node: DieNode in GameManager.dice_manager_node.get_children():
 		for effect: DieEffect in die_node.die.get_die_effects():
-			await effect._on_start_battle(die_node)
+			await effect._on_start_battle()
 
 
 func _on_dice_holder_holder_dice_updated() -> void:

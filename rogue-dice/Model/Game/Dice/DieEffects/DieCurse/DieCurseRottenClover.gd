@@ -8,8 +8,8 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/DieCurses/RottenClover.png")
 
-func _on_start_battle(_die_node: DieNode) -> void:
+func _on_start_battle() -> void:
 	GameManager.reroll_amt -= 1
 
-func _after_battle(_die_node: DieNode) -> void:
+func _after_battle() -> void:
 	GameManager.reroll_amt += 2

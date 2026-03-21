@@ -8,7 +8,7 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/Vampire.png")
 
-func _on_start_battle(die_node: DieNode) -> void:
+func _on_start_battle() -> void:
 	var die: Die = die_node.die
 	var face_indexes: Array = range(int(die.size))
 	var reduce_idx: int = face_indexes.pick_random()

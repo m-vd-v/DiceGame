@@ -8,7 +8,7 @@ func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/Grow.png")
 
 ## override
-func _after_reroll(die_node: DieNode) -> void:
+func _after_reroll() -> void:
 	var die: Die = die_node.die
 	die.faces[die.current_face] += 1
 	die_node.update_die_nr()

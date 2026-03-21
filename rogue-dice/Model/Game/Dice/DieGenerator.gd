@@ -9,7 +9,7 @@ enum Rarity {
 static var modifiers: Dictionary[Rarity, Array] = {
 	Rarity.COMMON: [
 		DieModifierCoin.new(), DieModifierLoaded.new(), DieModifierRecycle.new(),
-		DieModifierVampire.new(), DieModifierPowerUp.new()
+		DieModifierVampire.new(), DieModifierPowerUp.new(), DieModifierShiny.new()
 	],
 	Rarity.UNCOMMON: [
 		DieModifierSnowball.new(), DieModifierPrism.new(),

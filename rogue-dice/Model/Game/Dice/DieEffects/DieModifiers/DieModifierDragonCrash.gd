@@ -7,7 +7,7 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/DragonCrash.png")
 
-func _after_score(die_node: DieNode, dice_scorer: DiceScorer) -> void:
+func _after_score(dice_scorer: DiceScorer) -> void:
 	var next_die: DieNode = dice_scorer.next_dice[0]
 	if next_die == null:
 		return

@@ -7,7 +7,7 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/Loaded.png")
 
-func _replace_roll(die_node: DieNode) -> void:
+func _replace_roll() -> void:
 	if randi_range(0, 100) < 50:
 		return
 	var die: Die = die_node.die
