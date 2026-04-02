@@ -26,12 +26,15 @@ const ROLL_TIME: float = 0.1
 		die.die_effect_added.connect(_on_die_effect_added)
 
 var locked: bool = false
+@export var lock_on_ready: bool = false
 
 var in_dice_tray: bool = false
 var grabbed: bool = false
 
 func _ready() -> void:
 	update_die_size()
+	if lock_on_ready:
+		lock()
 	update_die_nr(die.roll())
 	sprite.modulate = Color(
 		randf_range(0.5, 1.0), randf_range(0.5, 1.0), randf_range(0.5, 1.0),
@@ -61,10 +64,10 @@ func unlock() -> void:
 	locked = false
 
 func roll(
-		push_dir: Vector2 = Vector2(
+			push_dir: Vector2 = Vector2(
 			randf_range(-1, 1), randf_range(-1, 1)
 			)
-	) -> void:
+		) -> void:
 	if locked:
 		return
 	push(push_dir)
@@ -105,7 +108,7 @@ func destroy() -> void:
 	).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 	await tween.finished
 	get_parent().remove_child(self)
-	GameManager.recalculate_dice_amt()
+	GameManager.recalculate_dice_weight()
 	queue_free()
 
 func set_die_temp_bonus(value: int) -> void:

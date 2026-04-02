@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fmx2h7y2g2l0"]
 
-[ext_resource type="Script" uid="uid://bxor5vjx4wnkm" path="res://die_grab_area.gd" id="1_p47pu"]
+[ext_resource type="Script" uid="uid://bxor5vjx4wnkm" path="res://Scripts/die_grab_area.gd" id="1_p47pu"]
 
 [node name="DieGrabArea" type="Area2D" unique_id=823760004]
 script = ExtResource("1_p47pu")

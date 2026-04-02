@@ -2,12 +2,16 @@ extends Node
 
 signal on_reroll
 
-signal lives_updated
+signal lives_updated(add_amt: int)
 var lives: int = 3 :
 	set(new_value):
 		var add_amt: int = new_value - lives
 		lives = new_value
-		lives_updated.emit(add_amt)
+		lives_updated.emit(add_amt, false)
+var max_lives: int = 3 :
+	set(new_value):
+		max_lives = new_value
+		lives_updated.emit()
 
 signal money_updated(add_amt: int)
 var money: int = 5 :
@@ -44,6 +48,8 @@ func recalculate_dice_weight() -> void:
 
 var road_map_node: RoadmapNode
 var dice_manager_node: DiceManager
+var figurine_manager: FigurineManager
+var hands: Hands = Hands.new()
 
 var shop_dice_amt: int = 4
 var common_dice_rate: int = 7

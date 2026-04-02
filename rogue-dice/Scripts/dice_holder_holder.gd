@@ -47,7 +47,7 @@ func count_score() -> void:
 	for dh: DiceHolder in dice_holders:
 		if dh.current_die != null:
 			dice_nodes.append(dh.current_die)
-	var dice_scorer: DiceScorer = DiceScorer.new(updated_score, 100)
+	var dice_scorer: DiceScorer = DiceScorer.new(updated_score, 0)
 	await dice_scorer.score_dice(dice_nodes)
 	await get_tree().create_timer(1).timeout
 	for die_node in dice_nodes:

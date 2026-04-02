@@ -1,36 +1,36 @@
-class_name Hands
+class_name Hands extends Resource
 
-class Type:
-	var name: String
-	var multiplier: float
+class Type extends Resource:
+	@export var name: String
+	@export var multiplier: float
 	func _init(_name: String, _multiplier: float) -> void:
 		name = _name
 		multiplier = _multiplier
 
-static var NONE: Type = Type.new("None", 0.0)
-static var HIGH_DIE: Type = Type.new("High Die", 1.0)
-static var PAIR: Type = Type.new("Pair", 1.5)
-static var TWO_PAIR: Type = Type.new("Two Pair", 2.0)
-static var THREE_OAK: Type = Type.new("Three of a Kind", 2.0)
-static var SHORT_STRAIGHT: Type = Type.new("Short Straight", 2.0)
-static var FULL_HOUSE: Type = Type.new("Full House", 2.5)
-static var FOUR_OAK: Type = Type.new("Four of a Kind", 3.0)
-static var LONG_STRAIGHT: Type = Type.new("Long Straight", 4.0)
-static var FIVE_OAK: Type = Type.new("Five of a Kind", 5.0)
+@export var NONE: Type = Type.new("None", 0.0)
+@export var HIGH_DIE: Type = Type.new("High Die", 1.0)
+@export var PAIR: Type = Type.new("Pair", 1.5)
+@export var TWO_PAIR: Type = Type.new("Two Pair", 2.0)
+@export var THREE_OAK: Type = Type.new("Three of a Kind", 2.0)
+@export var SHORT_STRAIGHT: Type = Type.new("Short Straight", 2.0)
+@export var FULL_HOUSE: Type = Type.new("Full House", 2.5)
+@export var FOUR_OAK: Type = Type.new("Four of a Kind", 3.0)
+@export var LONG_STRAIGHT: Type = Type.new("Long Straight", 4.0)
+@export var FIVE_OAK: Type = Type.new("Five of a Kind", 5.0)
 
-static var DOUBLE_3OAK: Type = Type.new("Double Triple", 5.0)
-static var FULLER_HOUSE: Type = Type.new("Fuller House", 5.0)
-static var THREE_PAIR: Type = Type.new("Three Pair", 3.0)
-static var LONGEST_STRAIGHT: Type = Type.new("Longest Straight", 8.0)
-static var SIX_OAK: Type = Type.new("Six of a Kind", 10.0)
+@export var DOUBLE_3OAK: Type = Type.new("Double Triple", 5.0)
+@export var FULLER_HOUSE: Type = Type.new("Fuller House", 5.0)
+@export var THREE_PAIR: Type = Type.new("Three Pair", 3.0)
+@export var LONGEST_STRAIGHT: Type = Type.new("Longest Straight", 8.0)
+@export var SIX_OAK: Type = Type.new("Six of a Kind", 10.0)
 
-static func get_hand_type_from_die_nodes(die_nodes: Array[DieNode]) -> Type:
+func get_hand_type_from_die_nodes(die_nodes: Array[DieNode]) -> Type:
 	var faces: Array[int] = []
 	for die_node in die_nodes:
 		faces.append(die_node.die.get_current_face_value())
 	return get_hand_type(faces)
 
-static func get_hand_type(faces: Array[int]) -> Type:
+func get_hand_type(faces: Array[int]) -> Type:
 	if faces.is_empty(): return NONE
 	var frequencies: Dictionary[int, int] = get_face_frequencies(faces)
 	var freq_arr: Array[int] = frequencies.values()

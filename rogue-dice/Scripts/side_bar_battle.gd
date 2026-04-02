@@ -6,18 +6,15 @@ class_name SidebarBattleNode extends SideBar
 @onready var battle_panel: RoadmapPanelBattle = panel
 
 func _ready() -> void:
-	update_sidebar()
-	GameManager.reroll_amt = GameManager.max_rerolls
-	update_score(0)
+	await sidebar_bg.after_slide_into_view
+	start_battle()
 
-func update_score(score: int) -> void:
+func update_score(score: int = 0) -> void:
 	score_label.text = (
 		"Score: " + str(score) +
 		"/" + str(battle_panel.battle.score)
 	)
-
-func update_hand() -> void:
-	var current_hand: Hands.Type = Hands.get_hand_type_from_die_nodes(
+	var current_hand: Hands.Type = GameManager.hands.get_hand_type_from_die_nodes(
 		dice_holder_holder.get_dice_nodes()
 	)
 	%HandLabel.text = (
@@ -34,17 +31,27 @@ func _on_score_button_pressed() -> void:
 		else:
 			dh.kick_die()
 	if battle_panel.battle.has_won():
-		sidebar_bg.show_next_buttons()
-		GameManager.money += 3
-		dice_holder_holder.queue_free()
-		$SideBar/ScoreButton.queue_free()
-		for die_node: DieNode in GameManager.dice_manager_node.get_children():
-			for effect: DieEffect in die_node.die.get_die_effects():
-				effect._after_battle()
+		end_battle()
 	else:
 		GameManager.lives -= 1
 		GameManager.reroll_amt = GameManager.max_rerolls
-	
+
+func start_battle() -> void:
+	update_sidebar()
+	GameManager.reroll_amt = GameManager.max_rerolls
+	update_score(0)
+	GameManager.figurine_manager._on_battle_start()
+
+func end_battle() -> void:
+	sidebar_bg.show_next_buttons()
+	GameManager.money += 3
+	dice_holder_holder.queue_free()
+	$SideBar/ScoreButton.queue_free()
+	for die_node: DieNode in GameManager.dice_manager_node.get_children():
+		for effect: DieEffect in die_node.die.get_die_effects():
+			await effect._after_battle()
+	GameManager.figurine_manager._on_battle_end()
+
 func _on_dice_holder_holder_updated_score(score: int) -> void:
 	battle_panel.battle.current_score = score
 	update_score(score)
@@ -56,4 +63,4 @@ func _on_side_bar_after_slide_into_view() -> void:
 
 
 func _on_dice_holder_holder_dice_updated() -> void:
-	update_hand()
+	update_score()

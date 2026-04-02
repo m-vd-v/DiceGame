@@ -14,7 +14,7 @@ static var modifiers: Dictionary[Rarity, Array] = {
 	Rarity.UNCOMMON: [
 		DieModifierSnowball.new(), DieModifierPrism.new(),
 		DieModifierGrow.new(), DieModifierHeal.new(),
-		DieModifierFeather.new()
+		DieModifierFeather.new(), DieModifierPlanet.new()
 	],
 	Rarity.RARE: [
 		DieModifierMirror.new(), DieModifierFireTornado.new(),
@@ -55,7 +55,7 @@ static var die_types: Dictionary[Rarity, Array] = {
 		DieTypeMoney.new(), DieTypeStandardPlus.new()
 	],
 	Rarity.RARE: [
-		DieTypePermabonus.new()
+		DieTypePermabonus.new(), DieTypeBackBonus.new()
 	]
 }
 static func generate_die_type(rarities: Array[Rarity],

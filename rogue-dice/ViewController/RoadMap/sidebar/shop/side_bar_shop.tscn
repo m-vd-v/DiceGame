@@ -3,18 +3,31 @@
 [ext_resource type="Script" uid="uid://2iwyafji4pcy" path="res://Scripts/side_bar_shop.gd" id="1_l5i1n"]
 [ext_resource type="Script" uid="uid://dmw5lrgvj23ud" path="res://Model/Game/Roadmap/Panels/RoadMapPanelShop.gd" id="3_32h6s"]
 [ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="4_3r6iq"]
+[ext_resource type="Script" uid="uid://bcvfi61rv215p" path="res://ViewController/Utilities/NodeHolder.gd" id="4_l5i1n"]
 
 [sub_resource type="Resource" id="Resource_l5i1n"]
 script = ExtResource("3_32h6s")
 metadata/_custom_type_script = "uid://dmw5lrgvj23ud"
 
-[node name="SideBarShop" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("shop_dice", "sidebar_bg")]
+[node name="SideBarShop" type="Node2D" unique_id=1532483261 node_paths=PackedStringArray("sidebar_bg")]
 script = ExtResource("1_l5i1n")
 shop_panel = SubResource("Resource_l5i1n")
-shop_dice = NodePath("SideBar/ShopDice")
 sidebar_bg = NodePath("SideBar")
 
 [node name="SideBar" parent="." unique_id=600030345 instance=ExtResource("4_3r6iq")]
 
-[node name="ShopDice" type="Node2D" parent="SideBar" unique_id=1053030866]
-position = Vector2(1262, 231)
+[node name="DiceHolder" type="Node2D" parent="SideBar" unique_id=1539966463]
+unique_name_in_owner = true
+position = Vector2(1179, 231)
+script = ExtResource("4_l5i1n")
+max_length = 1000
+fold_time = 0.0
+metadata/_custom_type_script = "uid://bcvfi61rv215p"
+
+[node name="FigurinesHolder" type="Node2D" parent="SideBar" unique_id=156414406]
+unique_name_in_owner = true
+position = Vector2(1178, 403)
+script = ExtResource("4_l5i1n")
+max_length = 1000
+fold_time = 0.0
+metadata/_custom_type_script = "uid://bcvfi61rv215p"

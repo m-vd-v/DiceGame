@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dx3qpekbk44m8"]
 
-[ext_resource type="Script" uid="uid://n17n5fickvqu" path="res://ViewController/RoadMap/sidebar/shop/die_upgrader.gd" id="1_8j1us"]
+[ext_resource type="Script" uid="uid://n17n5fickvqu" path="res://Scripts/die_upgrader.gd" id="1_8j1us"]
 [ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="1_f4nwl"]
 [ext_resource type="Script" uid="uid://bw2buous6e43u" path="res://ViewController/RoadMap/sidebar/shop/BuyButton.gd" id="2_8j1us"]
 

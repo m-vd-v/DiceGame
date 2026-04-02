@@ -18,7 +18,8 @@ var rest_panels: Array[RoadmapPanel] = [
 ]
 
 func generate_as_rest_layer(panel_amt: int) -> RoadmapLayer:
-	for i in panel_amt:
+	panels.append(RoadmapPanelShop.new())
+	for i in panel_amt-1:
 		panels.append(
 			rest_panels.pick_random()
 		)

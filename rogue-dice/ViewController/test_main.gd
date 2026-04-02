@@ -6,16 +6,15 @@ extends Node2D
 @export var lives_label: Label
 @export var dice_amt_label: Label
 
+
 func _ready() -> void:
-	print(Hands.get_longest_straight_len([
-		0, 1, 3, 4, 5, 7, 8
-	]))
 	update_visuals()
 	GameManager.lives_updated.connect(update_visuals)
 	GameManager.money_updated.connect(update_visuals)
 	GameManager.reroll_amt_updated.connect(update_visuals)
 	GameManager.dice_weight_updated.connect(update_visuals)
 	dice_mngr.recalculate_die_weight()
+	
 
 func update_visuals(_add_amt: int = 0) -> void:
 	roll_button.text = (
@@ -26,7 +25,8 @@ func update_visuals(_add_amt: int = 0) -> void:
 		"Money: " + str(GameManager.money)
 	)
 	lives_label.text = (
-		"Lives: " + str(GameManager.lives)
+		"Lives: (" + str(GameManager.lives) +
+		"/" + str(GameManager.max_lives) + ")"
 	)
 	dice_amt_label.text = (
 		"Dice Weight: " + str(GameManager.dice_weight) + " / " +
@@ -39,3 +39,4 @@ func _on_roll_button_pressed() -> void:
 	GameManager.on_reroll.emit()
 	dice_mngr.roll_all()
 	GameManager.reroll_amt -= 1
+	GameManager.figurine_manager._on_reroll()

@@ -18,7 +18,7 @@ func _replace_roll() -> void:
 func _after_reroll() -> void:
 	pass
 
-func _after_score(_dice_scorer: DiceScorer) -> void:
+func _after_score(_dice_scorer: DiceScorer, _can_rescore: bool) -> void:
 	pass
 
 func _on_gain_temp_bonus(_gain_amt: int) -> void:

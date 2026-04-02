@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6w7eckfdchg2"]
 
-[ext_resource type="Script" uid="uid://cun7vf208fsre" path="res://ViewController/Utilities/dice_holder.gd" id="1_ussyj"]
+[ext_resource type="Script" uid="uid://cun7vf208fsre" path="res://Scripts/dice_holder.gd" id="1_ussyj"]
 
 [sub_resource type="Gradient" id="Gradient_qtqc7"]
 colors = PackedColorArray(0.2, 0.164, 0.128, 1, 0.3, 0.2473, 0.198, 1)

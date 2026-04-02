@@ -7,7 +7,7 @@ func get_description() -> String:
 func get_icon() -> Texture:
 	return load("res://Assets/Images/Sprites/DieModifiers/FireTornado.png")
 
-func _after_score(dice_scorer: DiceScorer) -> void:
-	await dice_scorer.score_die(
-		die_node, false
-	)
+func _after_score(dice_scorer: DiceScorer, can_rescore: bool) -> void:
+	if not can_rescore:
+		return
+	await dice_scorer.rescore_die(die_node)

@@ -11,6 +11,9 @@ signal bought(buy_button: BuyButton)
 
 var sayer: Sayer = Sayer.new()
 
+@export var die_node: DieNode
+@export var figurine_node: FigurineNode
+
 func _ready() -> void:
 	add_child(sayer)
 	sayer.start_pos = Vector2.ZERO
@@ -28,5 +31,13 @@ func try_buy() -> void:
 	if not dont_remove_price_from_money:
 		GameManager.money -= price
 	bought.emit(self)
+	
+	if die_node != null:
+		GameManager.dice_manager_node.add_die(die_node)
+	if figurine_node != null:
+		GameManager.figurine_manager.add_figurine_node(figurine_node)
+		figurine_node.enable_buttons()
+	
 	if queue_free_on_bought:
+		await get_tree().process_frame
 		queue_free()

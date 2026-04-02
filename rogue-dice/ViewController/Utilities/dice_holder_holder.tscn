@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dexyc4k7sp4t1"]
+[gd_scene format=3 uid="uid://dexyc4k7sp4t1"]
 
-[ext_resource type="Script" uid="uid://cr3t7mg2ug5c7" path="res://dice_holder_holder.gd" id="1_lfya6"]
+[ext_resource type="Script" uid="uid://cr3t7mg2ug5c7" path="res://Scripts/dice_holder_holder.gd" id="1_lfya6"]
 
 [node name="DiceHolderHolder" type="Node2D"]
 script = ExtResource("1_lfya6")
