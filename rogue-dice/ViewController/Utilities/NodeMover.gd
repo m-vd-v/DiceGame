@@ -14,6 +14,9 @@ func move_node(
 			tw_ease: Tween.EaseType = tween_ease,
 			tw_trans: Tween.TransitionType = tween_transition
 		) -> void:
+	if time == 0.0:
+		node.position = aim_pos
+		return
 	var tween: Tween = create_tween()
 	tween.tween_property(
 		node, position_type, 

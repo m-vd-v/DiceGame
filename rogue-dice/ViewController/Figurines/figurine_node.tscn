@@ -2,15 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b04xboxtv54ct" path="res://Scripts/figurine_node.gd" id="1_x1lvr"]
 [ext_resource type="Texture2D" uid="uid://d4immyrfu7fqg" path="res://Assets/Images/Sprites/DieModifiers/Loaded.png" id="2_yf5ap"]
-[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="3_5x6dg"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="3_5x6dg"]
 [ext_resource type="Script" uid="uid://dei3dxv5o2emw" path="res://Scripts/sayer.gd" id="4_46r5e"]
 [ext_resource type="Script" uid="uid://bpwjw5uyfeweh" path="res://ViewController/Figurines/figurine_info.gd" id="5_0oj44"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_46r5e"]
-font = ExtResource("3_5x6dg")
-font_size = 32
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0oj44"]
 font = ExtResource("3_5x6dg")
@@ -26,37 +20,14 @@ font_size = 32
 font = ExtResource("3_5x6dg")
 font_size = 24
 
+[sub_resource type="LabelSettings" id="LabelSettings_46r5e"]
+font = ExtResource("3_5x6dg")
+font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [node name="FigurineNode" type="Node2D" unique_id=1361291008]
 script = ExtResource("1_x1lvr")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1403330958]
-offset_right = 40.0
-offset_bottom = 40.0
-mouse_filter = 2
-
-[node name="FigurineTexture" type="TextureRect" parent="VBoxContainer" unique_id=1135553610]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(96, 96)
-layout_mode = 2
-texture = ExtResource("2_yf5ap")
-expand_mode = 1
-
-[node name="ButtonHolder" type="VBoxContainer" parent="VBoxContainer" unique_id=170868375]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ValueLabel" type="Label" parent="." unique_id=353342724]
-unique_name_in_owner = true
-z_index = 1
-offset_left = 64.0
-offset_top = 50.0
-offset_right = 96.0
-offset_bottom = 96.0
-text = "1"
-label_settings = SubResource("LabelSettings_46r5e")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Sayer" type="Node2D" parent="." unique_id=1391824892]
 unique_name_in_owner = true
@@ -66,35 +37,54 @@ end_pos = Vector2(0, 100)
 label_settings = SubResource("LabelSettings_0oj44")
 metadata/_custom_type_script = "uid://dei3dxv5o2emw"
 
-[node name="FigurineInfo" type="Control" parent="." unique_id=216759939]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 0
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1651103696]
 offset_right = 40.0
 offset_bottom = 40.0
+use_top_left = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1403330958]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="FigurineTexture" type="TextureRect" parent="CenterContainer/VBoxContainer" unique_id=1135553610]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("2_yf5ap")
+expand_mode = 1
+
+[node name="ButtonHolder" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=170868375]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="FigurineInfo" type="Control" parent="CenterContainer" unique_id=216759939]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 mouse_filter = 2
 script = ExtResource("5_0oj44")
 
-[node name="MarginContainer" type="MarginContainer" parent="FigurineInfo" unique_id=13415201]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/FigurineInfo" unique_id=13415201]
 layout_mode = 0
-offset_top = 128.0
-offset_right = 300.0
-offset_bottom = 212.0
+offset_left = -150.0
+offset_top = 47.0
+offset_right = 150.0
+offset_bottom = 131.0
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="FigurineInfo/MarginContainer" unique_id=1057132138]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/FigurineInfo/MarginContainer" unique_id=1057132138]
 layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.34901962)
 metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FigurineInfo/MarginContainer" unique_id=77721715]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/FigurineInfo/MarginContainer" unique_id=77721715]
 layout_mode = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="TitleLabel" type="Label" parent="FigurineInfo/MarginContainer/VBoxContainer" unique_id=1690358893]
+[node name="TitleLabel" type="Label" parent="CenterContainer/FigurineInfo/MarginContainer/VBoxContainer" unique_id=1690358893]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -104,7 +94,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 metadata/_edit_lock_ = true
 
-[node name="DescrLabel" type="Label" parent="FigurineInfo/MarginContainer/VBoxContainer" unique_id=1423123363]
+[node name="DescrLabel" type="Label" parent="CenterContainer/FigurineInfo/MarginContainer/VBoxContainer" unique_id=1423123363]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -114,5 +104,16 @@ horizontal_alignment = 1
 autowrap_mode = 3
 metadata/_edit_lock_ = true
 
-[connection signal="mouse_entered" from="VBoxContainer/FigurineTexture" to="." method="_on_figurine_texture_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/FigurineTexture" to="." method="_on_figurine_texture_mouse_exited"]
+[node name="ValueLabel" type="Label" parent="." unique_id=353342724]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 22.0
+offset_right = 36.0
+offset_bottom = 46.0
+text = "1"
+label_settings = SubResource("LabelSettings_46r5e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/FigurineTexture" to="." method="_on_figurine_texture_mouse_entered"]
+[connection signal="mouse_exited" from="CenterContainer/VBoxContainer/FigurineTexture" to="." method="_on_figurine_texture_mouse_exited"]

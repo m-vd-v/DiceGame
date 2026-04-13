@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://72igskch6n0o"]
 
 [ext_resource type="Script" uid="uid://dei3dxv5o2emw" path="res://Scripts/sayer.gd" id="1_5vdp0"]
-[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="2_yofqr"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="2_yofqr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i7r73"]
 font = ExtResource("2_yofqr")

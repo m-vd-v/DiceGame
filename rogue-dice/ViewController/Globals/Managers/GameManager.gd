@@ -7,7 +7,7 @@ var lives: int = 3 :
 	set(new_value):
 		var add_amt: int = new_value - lives
 		lives = new_value
-		lives_updated.emit(add_amt, false)
+		lives_updated.emit(add_amt)
 var max_lives: int = 3 :
 	set(new_value):
 		max_lives = new_value
@@ -19,6 +19,12 @@ var money: int = 5 :
 		var add_amt: int = new_value - money
 		money = new_value
 		money_updated.emit(add_amt)
+		
+func try_buy(price: int) -> bool:
+	if money >= price:
+		money -= price
+		return true
+	return false
 
 signal reroll_amt_updated
 var reroll_amt: int = 3 :

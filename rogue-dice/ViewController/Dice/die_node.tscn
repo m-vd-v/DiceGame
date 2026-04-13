@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://tlxr42tsud2o" path="res://Scripts/die_node.gd" id="1_qdyun"]
 [ext_resource type="Texture2D" uid="uid://dvtfsfef1pqbr" path="res://Assets/Images/Sprites/Dice/d20.svg" id="2_j3u0e"]
-[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="2_kij1j"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="2_kij1j"]
 [ext_resource type="Shape2D" uid="uid://dqby3d1d7b7ut" path="res://ViewController/Globals/Utilities/DiceNodeCollisionShapes/d20.tres" id="4_c0tu2"]
 [ext_resource type="PackedScene" uid="uid://fmx2h7y2g2l0" path="res://ViewController/Utilities/die_grab_area.tscn" id="5_c0tu2"]
 [ext_resource type="PackedScene" uid="uid://72igskch6n0o" path="res://ViewController/Utilities/sayer.tscn" id="6_ii7a2"]

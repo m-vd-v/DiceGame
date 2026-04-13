@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dutqghrib2i7k"
-path="res://.godot/imported/Comic-Sans.ttf-17c68506a7ffccc0e3aeae0721ea1526.fontdata"
+path="res://.godot/imported/Comic-Sans.ttf-7b3a8e3a982bb5ec6944a285d8507014.fontdata"
 
 [deps]
 
-source_file="res://Assets/Other/Comic-Sans.ttf"
-dest_files=["res://.godot/imported/Comic-Sans.ttf-17c68506a7ffccc0e3aeae0721ea1526.fontdata"]
+source_file="res://Assets/Other/Fonts/Comic-Sans.ttf"
+dest_files=["res://.godot/imported/Comic-Sans.ttf-7b3a8e3a982bb5ec6944a285d8507014.fontdata"]
 
 [params]
 

@@ -17,6 +17,7 @@ func add_die(die_node: DieNode) -> void:
 	await create_tween().tween_property(
 		die_node, "position", Vector2.ZERO, 0.5
 	).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC).finished
+	die_node.unlock()
 	die_node.roll()
 
 func recalculate_die_weight() -> void:

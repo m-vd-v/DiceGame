@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dej06to8477pd" path="res://ViewController/RoadMap/sidebar/BG/side_bar_BG.tscn" id="2_a0gl5"]
 [ext_resource type="Script" uid="uid://bw2buous6e43u" path="res://ViewController/RoadMap/sidebar/shop/BuyButton.gd" id="3_a0gl5"]
 [ext_resource type="PackedScene" uid="uid://b6w7eckfdchg2" path="res://ViewController/Utilities/dice_holder.tscn" id="4_xiaed"]
-[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="5_xiaed"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="5_xiaed"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_iyy04"]
 font = ExtResource("5_xiaed")

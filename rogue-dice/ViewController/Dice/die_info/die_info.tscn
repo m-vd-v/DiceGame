@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dbfj3b4s0055x" path="res://ViewController/Dice/die_info/die_values_shower.tscn" id="1_b1grx"]
 [ext_resource type="Script" uid="uid://dajln6fsoyurv" path="res://ViewController/Dice/die_info/die_info.gd" id="1_ho7if"]
-[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="1_jet18"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="1_jet18"]
 [ext_resource type="Texture2D" uid="uid://bkpqyrqv4uek3" path="res://Assets/Images/Sprites/DieModifiers/DieCurses/Heavy.png" id="3_i11v1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p2d76"]

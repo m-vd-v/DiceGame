@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://btk02hq15aoac"]
+
+[ext_resource type="Script" uid="uid://c651r7dvd7oym" path="res://Scripts/run_menu.gd" id="1_uqtwc"]
+[ext_resource type="LabelSettings" uid="uid://4tl2r8yl76e6" path="res://Assets/Other/Fonts/LabelSettings/CmcSans64Outline.tres" id="1_y07kq"]
+[ext_resource type="LabelSettings" uid="uid://o2njwgulwdtf" path="res://Assets/Other/Fonts/LabelSettings/CmcSans48.tres" id="2_y07kq"]
+
+[node name="RunMenu" type="Control" unique_id=203830990]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqtwc")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1803734901]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BG" type="ColorRect" parent="MarginContainer" unique_id=965243408]
+layout_mode = 2
+color = Color(0, 0, 0, 0.78431374)
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=513592397]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer" unique_id=1048645705]
+layout_mode = 2
+
+[node name="RunMenuTitle" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=725159743]
+layout_mode = 2
+text = "Run Menu"
+label_settings = ExtResource("1_y07kq")
+
+[node name="AnteAmtLabel" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1253660887]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Layer 0"
+label_settings = ExtResource("2_y07kq")
+
+[node name="AnteList" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer" unique_id=1386507813]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_y07kq")

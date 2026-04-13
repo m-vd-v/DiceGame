@@ -7,12 +7,14 @@
 [ext_resource type="Script" uid="uid://v61xcfi62sw" path="res://Model/Game/Dice/Die.gd" id="3_x2bfe"]
 [ext_resource type="PackedScene" uid="uid://dxii43uujyyoy" path="res://ViewController/Dice/dice_manager.tscn" id="4_141qg"]
 [ext_resource type="Script" uid="uid://edo4fqvmscpf" path="res://Model/Game/Dice/DieTypes/DieTypeMoney.gd" id="8_6vk31"]
-[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="8_stpfq"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="8_stpfq"]
 [ext_resource type="Script" uid="uid://cdnnt8gsu0ien" path="res://Model/Game/Dice/DieEffects/DieModifiers/DieModifierPlanet.gd" id="9_ej0se"]
 [ext_resource type="Script" uid="uid://bl288rbgx4tbv" path="res://Model/Game/Dice/DieTypes/DieTypeBonus.gd" id="10_6vk31"]
 [ext_resource type="Script" uid="uid://bwyntilqehncr" path="res://Model/Game/Dice/DieTypes/DieTypeMultiplier.gd" id="10_ej0se"]
 [ext_resource type="Script" uid="uid://3nucyi6n3h1m" path="res://Model/Game/Dice/DieTypes/DieTypeStandard.gd" id="11_6vk31"]
 [ext_resource type="PackedScene" uid="uid://dtpkdw0h2wwgc" path="res://ViewController/Figurines/figurine_manager.tscn" id="13_cf5uq"]
+[ext_resource type="PackedScene" uid="uid://btk02hq15aoac" path="res://ViewController/Menus/run_menu.tscn" id="14_2w6y8"]
+[ext_resource type="PackedScene" uid="uid://hfllirhqq2wb" path="res://ViewController/RoadMap/Events/Utilites/event_buy_button.tscn" id="15_q5eh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnshl"]
 size = Vector2(2176, 128)
@@ -215,12 +217,19 @@ label_settings = SubResource("LabelSettings_6vk31")
 
 [node name="FigurineManager" parent="." unique_id=1661463037 instance=ExtResource("13_cf5uq")]
 position = Vector2(45, 53)
-direction = null
-max_length = null
-fold_position = null
-fold_ease = null
-fold_transition = null
-fold_time = null
-position_type = null
+node_size = Vector2(200, 100)
+node_move_time = 0.2
+tween_ease = 2
+tween_transition = 7
+
+[node name="RunMenu" parent="." unique_id=203830990 instance=ExtResource("14_2w6y8")]
+unique_name_in_owner = true
+visible = false
+
+[node name="EventBuyButton" parent="." unique_id=256106324 instance=ExtResource("15_q5eh4")]
+offset_left = 1267.0
+offset_top = 236.0
+offset_right = 1267.0
+offset_bottom = 236.0
 
 [connection signal="pressed" from="RollButton" to="." method="_on_roll_button_pressed"]

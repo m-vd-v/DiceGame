@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cfyhxciw2yl7j"]
+
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="1_d1ela"]
+
+[resource]
+font = ExtResource("1_d1ela")
+font_size = 32

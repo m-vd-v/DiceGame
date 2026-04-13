@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://db7525f0f7ssx"]
+
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="1_itt6v"]
+
+[resource]
+font = ExtResource("1_itt6v")

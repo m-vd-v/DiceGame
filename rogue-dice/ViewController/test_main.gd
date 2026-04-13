@@ -6,6 +6,9 @@ extends Node2D
 @export var lives_label: Label
 @export var dice_amt_label: Label
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		%RunMenu.toggle_appear()
 
 func _ready() -> void:
 	update_visuals()
@@ -14,7 +17,7 @@ func _ready() -> void:
 	GameManager.reroll_amt_updated.connect(update_visuals)
 	GameManager.dice_weight_updated.connect(update_visuals)
 	dice_mngr.recalculate_die_weight()
-	
+
 
 func update_visuals(_add_amt: int = 0) -> void:
 	roll_button.text = (

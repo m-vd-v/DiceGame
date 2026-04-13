@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://hfllirhqq2wb"]
+
+[ext_resource type="Script" uid="uid://dbcvyibhe8d1" path="res://event_buy_button.gd" id="1_w27ti"]
+[ext_resource type="Script" uid="uid://v61xcfi62sw" path="res://Model/Game/Dice/Die.gd" id="2_6iffc"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="2_hgyef"]
+[ext_resource type="Script" uid="uid://bcvfi61rv215p" path="res://ViewController/Utilities/NodeHolder.gd" id="3_hgyef"]
+[ext_resource type="Script" uid="uid://dcts85ioh3xyf" path="res://Model/Game/Figurines/Figurine.gd" id="3_oecrv"]
+[ext_resource type="Script" uid="uid://bblgg7b18doq3" path="res://Model/Game/Figurines/Figurines/FigurineGoldStatue.gd" id="4_pstwy"]
+[ext_resource type="Script" uid="uid://cxc8b2bor1aku" path="res://Model/Game/Figurines/Figurines/FigurineEmperorPenguin.gd" id="5_oecrv"]
+[ext_resource type="LabelSettings" uid="uid://ccahmjyntdou6" path="res://Assets/Other/Fonts/LabelSettings/CmcSans24Outline.tres" id="7_pstwy"]
+[ext_resource type="Script" uid="uid://dei3dxv5o2emw" path="res://Scripts/sayer.gd" id="9_oruuk"]
+[ext_resource type="LabelSettings" uid="uid://dbsps70mn2l3" path="res://Assets/Other/Fonts/LabelSettings/CmcSans32Outline.tres" id="10_co012"]
+
+[sub_resource type="Resource" id="Resource_oruuk"]
+script = ExtResource("2_6iffc")
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_pstwy"]
+script = ExtResource("2_6iffc")
+metadata/_custom_type_script = "uid://v61xcfi62sw"
+
+[sub_resource type="Resource" id="Resource_co012"]
+script = ExtResource("4_pstwy")
+metadata/_custom_type_script = "uid://bblgg7b18doq3"
+
+[sub_resource type="Resource" id="Resource_f1pg6"]
+script = ExtResource("5_oecrv")
+metadata/_custom_type_script = "uid://cxc8b2bor1aku"
+
+[node name="EventBuyButton" type="Control" unique_id=256106324]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_w27ti")
+die_rewards = Array[ExtResource("2_6iffc")]([SubResource("Resource_oruuk"), SubResource("Resource_pstwy")])
+figurine_rewards = Array[ExtResource("3_oecrv")]([SubResource("Resource_co012"), SubResource("Resource_f1pg6")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=978273437]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=705990525]
+layout_mode = 2
+
+[node name="BuyButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1386848993]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hgyef")
+theme_override_font_sizes/font_size = 32
+text = "Button Text "
+
+[node name="CostLabel" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=686116064]
+unique_name_in_owner = true
+layout_mode = 2
+text = "$10"
+label_settings = ExtResource("7_pstwy")
+horizontal_alignment = 1
+
+[node name="NodeHolderHolder" type="Control" parent="HBoxContainer" unique_id=1321947393]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="RewardHolder" type="Node2D" parent="HBoxContainer/NodeHolderHolder" unique_id=311837622]
+unique_name_in_owner = true
+position = Vector2(50, 32)
+script = ExtResource("3_hgyef")
+node_move_time = 0.0
+metadata/_custom_type_script = "uid://bcvfi61rv215p"
+
+[node name="Sayer" type="Node2D" parent="." unique_id=2017022122]
+unique_name_in_owner = true
+script = ExtResource("9_oruuk")
+end_pos = Vector2(0, -50)
+label_settings = ExtResource("10_co012")
+metadata/_custom_type_script = "uid://dei3dxv5o2emw"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]

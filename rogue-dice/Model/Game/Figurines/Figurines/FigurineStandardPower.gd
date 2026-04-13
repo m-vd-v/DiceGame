@@ -8,7 +8,7 @@ func get_description() -> String:
 	)
 func get_texture() -> Texture:
 	return load(
-		"res://Assets/Images/Sprites/DieModifiers/Grow.png"
+		"res://Assets/Images/Sprites/Figurines/StandardPower.png"
 	)
 
 func _on_before_score_die(

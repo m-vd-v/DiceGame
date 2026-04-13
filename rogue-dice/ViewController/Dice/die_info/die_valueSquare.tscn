@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://wp2qgq5s3aqg"]
 
 [ext_resource type="Script" uid="uid://cjrujdt7u3i64" path="res://ViewController/Dice/die_info/die_value_square.gd" id="1_m2vuj"]
-[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="2_ooww3"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="2_ooww3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nsjsr"]
 font = ExtResource("2_ooww3")

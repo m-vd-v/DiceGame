@@ -8,7 +8,7 @@ func get_description() -> String:
 	)
 func get_texture() -> Texture:
 	return load(
-		"res://Assets/Images/Sprites/DieModifiers/Heal.png"
+		"res://Assets/Images/Sprites/Figurines/HealingKit.png"
 	)
 
 func _on_battle_start() -> void:

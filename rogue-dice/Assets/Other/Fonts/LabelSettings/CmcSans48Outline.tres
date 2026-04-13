@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://d1u61khodi2ew"]
+
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="1_ehhbi"]
+
+[resource]
+font = ExtResource("1_ehhbi")
+font_size = 64
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)

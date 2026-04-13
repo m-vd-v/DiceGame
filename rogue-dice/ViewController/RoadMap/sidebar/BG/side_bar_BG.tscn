@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dej06to8477pd"]
 
 [ext_resource type="Script" uid="uid://cdchv6rld6np8" path="res://Scripts/side_bar.gd" id="1_tccj6"]
-[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Comic-Sans.ttf" id="2_5tlir"]
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="2_5tlir"]
 
 [sub_resource type="Gradient" id="Gradient_4qpgl"]
 colors = PackedColorArray(1, 1, 1, 0.39215687, 0.83, 0.83, 0.83, 0.39215687)

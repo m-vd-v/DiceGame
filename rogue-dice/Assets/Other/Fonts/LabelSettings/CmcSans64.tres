@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cajorwt5kiagu"]
+
+[ext_resource type="FontFile" uid="uid://dutqghrib2i7k" path="res://Assets/Other/Fonts/Comic-Sans.ttf" id="1_mrhml"]
+
+[resource]
+font = ExtResource("1_mrhml")
+font_size = 64

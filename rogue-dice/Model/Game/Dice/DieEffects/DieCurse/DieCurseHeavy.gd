@@ -9,5 +9,8 @@ func get_icon() -> Texture:
 		"res://Assets/Images/Sprites/DieModifiers/DieCurses/Heavy.png"
 	)
 
+func _on_added_to_die_node() -> void:
+	GameManager.recalculate_dice_weight()
+
 func modify_die_weight(old_weight: int) -> int:
 	return old_weight + 1

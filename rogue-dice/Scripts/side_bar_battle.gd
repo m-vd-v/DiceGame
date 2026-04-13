@@ -12,7 +12,7 @@ func _ready() -> void:
 func update_score(score: int = 0) -> void:
 	score_label.text = (
 		"Score: " + str(score) +
-		"/" + str(battle_panel.battle.score)
+		"/" + str(battle_panel.battle.req_score)
 	)
 	var current_hand: Hands.Type = GameManager.hands.get_hand_type_from_die_nodes(
 		dice_holder_holder.get_dice_nodes()
@@ -21,6 +21,7 @@ func update_score(score: int = 0) -> void:
 		"Current Hand: " + current_hand.name +
 		"\nMultiplier: " + str(current_hand.multiplier) + "x"
 	)
+	%BossDescription.text = battle_panel.battle.boss.get_description()
 
 func _on_score_button_pressed() -> void:
 	await dice_holder_holder.count_score()
@@ -40,7 +41,11 @@ func start_battle() -> void:
 	update_sidebar()
 	GameManager.reroll_amt = GameManager.max_rerolls
 	update_score(0)
-	GameManager.figurine_manager._on_battle_start()
+	await GameManager.figurine_manager._on_battle_start()
+	for die_node: DieNode in GameManager.dice_manager_node.get_children():
+		for effect: DieEffect in die_node.die.get_die_effects():
+			await effect._on_start_battle()
+	await battle_panel.battle.start()
 
 func end_battle() -> void:
 	sidebar_bg.show_next_buttons()
@@ -51,15 +56,12 @@ func end_battle() -> void:
 		for effect: DieEffect in die_node.die.get_die_effects():
 			await effect._after_battle()
 	GameManager.figurine_manager._on_battle_end()
+	await battle_panel.battle.end()
 
 func _on_dice_holder_holder_updated_score(score: int) -> void:
 	battle_panel.battle.current_score = score
 	update_score(score)
 
-func _on_side_bar_after_slide_into_view() -> void:
-	for die_node: DieNode in GameManager.dice_manager_node.get_children():
-		for effect: DieEffect in die_node.die.get_die_effects():
-			await effect._on_start_battle()
 
 
 func _on_dice_holder_holder_dice_updated() -> void:
